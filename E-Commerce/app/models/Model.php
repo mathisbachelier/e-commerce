@@ -14,7 +14,7 @@ abstract class Model {
 
     public function all():array
     {
-        return $this->query("SELECT * FROM {$this->table} ORDER BY created_at DESC ");
+        return $this->query("SELECT * FROM {$this->table}  ");
     }
 
     public function findById(int $id)

@@ -2,6 +2,7 @@
 namespace App\controllers;
 use Database\DBConnection;
 
+
 abstract class Controller {
 
     protected $db ;
