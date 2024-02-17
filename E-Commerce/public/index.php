@@ -15,6 +15,7 @@ $router = new Router($url);
 // Exemple de route simple POST ou GET : 
 // $router->get/post('url','chemain du controller + @ methode');
 $router->get('/orders', 'App\controllers\OrderManagmentController@index');
+$router->post('/orders/delete/:id','App\controllers\OrderManagmentController@destroy');
 
 try{
      $router->run(); 

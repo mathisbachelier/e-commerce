@@ -14,5 +14,19 @@ class OrderManagmentController extends Controller{
         
         return $this->view('oders', compact('orders'));
     }
+    public function destroy(int $id){
+        $model = new OrderManagmentModel($this->getDB());
+        $model->destroy($id);
+        
+        return header('location: /e-commerce-BTS-SIO/E-Commerce/orders/');
+        
+    }
+    public function show(int $id)
+    {
+      $oders = new OrderManagmentModel($this->getDB());
+      $order =$orders->findById($id);
+       
+         return $this->view("blog.show",compact('order'));
+    }
     }
 
