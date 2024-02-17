@@ -23,10 +23,10 @@ class OrderManagmentController extends Controller{
     }
     public function show(int $id)
     {
-      $oders = new OrderManagmentModel($this->getDB());
+      $orders = new OrderManagmentModel($this->getDB());
       $order =$orders->findById($id);
        
-         return $this->view("blog.show",compact('order'));
+         return $this->view("order",compact('order'));
     }
     }
 
