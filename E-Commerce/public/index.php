@@ -19,6 +19,7 @@ $router -> get('/productManagement/edit/:id', 'App\controllers\productManagement
 $router -> post('/productManagement/edit/:id', 'App\controllers\productManagementController@update');
 $router -> post('/productManagement/delete/:id', 'App\controllers\productManagementController@destroy');
 $router -> get('/productManagement/create', 'App\controllers\productManagementController@create');
+$router -> post('/productManagement/create', 'App\controllers\productManagementController@createProduct');
 
 try{
      $router->run(); 

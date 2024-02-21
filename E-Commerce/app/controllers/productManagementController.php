@@ -7,18 +7,18 @@ class productManagementController extends Controller{
 
     public function index()
     {
-        $porduct = new Product($this->getDB());
-        $porducts = $porduct->all();
+        $product = new Product($this->getDB());
+        $products = $product->all();
 
-        return $this->view("productManagement.index", compact('porducts'));
+        return $this->view("productManagement.index", compact('products'));
     }
 
     public function edit(int $id)
     {
-        $porduct = new Product($this->getDB());
-        $porduct =  $porduct->findById($id);
+        $product = new Product($this->getDB());
+        $product =  $product->findById($id);
 
-        return $this->view("productManagement.edit", compact('porduct'));
+        return $this->view("productManagement.edit", compact('product'));
     }
 
     public function update(int $id)
@@ -32,8 +32,8 @@ class productManagementController extends Controller{
 
     public function destroy(int $id)
     {
-        $porduct = new Product($this->getDB());
-        $result = $porduct->destroy($id);
+        $product = new Product($this->getDB());
+        $result = $product->destroy($id);
         if($result){
             return header('location: /E-Commerce-BTS-SIO/E-Commerce/productManagement');
         }
@@ -42,5 +42,14 @@ class productManagementController extends Controller{
     public function create()
     {
         return $this->view("productManagement.create");
+    }
+
+    public function createProduct()
+    {
+        $product = new Product($this->getDB());
+        $result = $product->create($_POST);
+        if($result){
+            return header('location: /E-Commerce-BTS-SIO/E-Commerce/productManagement');
+        }
     }
 }

@@ -17,14 +17,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach($params['porducts'] as $porduct): ?>
+                    <?php foreach($params['products'] as $product): ?>
                         <tr>
-                            <td style="text-align: center;"><?= $porduct->name ?></td>
-                            <td style="text-align: center;"><?= $porduct->price ?></td>
-                            <td style="text-align: center;"><?= $porduct->stock ?></td>
-                            <td style="text-align: center;"><a href="/E-Commerce-BTS-SIO/E-Commerce/productManagement/edit/<?= $porduct->id ?>">Modifier</a></td>
+                            <td style="text-align: center;"><?= $product->name ?></td>
+                            <td style="text-align: center;"><?= $product->price ?></td>
+                            <td style="text-align: center;"><?= $product->stock ?></td>
+                            <td style="text-align: center;"><a href="/E-Commerce-BTS-SIO/E-Commerce/productManagement/edit/<?= $product->id ?>">Modifier</a></td>
                             <td style="text-align: center;">
-                                <form action="/E-Commerce-BTS-SIO/E-Commerce/productManagement/delete/<?= $porduct->id ?>" method="post" style="display: inline;">
+                                <form action="/E-Commerce-BTS-SIO/E-Commerce/productManagement/delete/<?= $product->id ?>" method="post" style="display: inline;">
                                     <button type="submit" class="btn btn-outline-danger">Supprimer</button>
                                 </form>
                             </td>

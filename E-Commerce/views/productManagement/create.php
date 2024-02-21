@@ -29,7 +29,7 @@
                     <label for="category_id">Catégorie</label>
                     <select class="form-control" name="category_id" id="category_id"></select>
                 </div>
-                <button type="submit" class="btn btn-primary">Modifier</button>
+                <button type="submit" class="btn btn-primary">Ajouter</button>
             </form>
         </div>
     </div>

@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : jeu. 15 fév. 2024 à 17:06
--- Version du serveur : 10.4.28-MariaDB
--- Version de PHP : 8.2.4
+-- Généré le : mer. 21 fév. 2024 à 21:03
+-- Version du serveur : 10.4.32-MariaDB
+-- Version de PHP : 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -144,3 +144,176 @@ CREATE TABLE `user` (
   `date_of_birth` date DEFAULT NULL,
   `gender` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Index pour les tables déchargées
+--
+
+--
+-- Index pour la table `address`
+--
+ALTER TABLE `address`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `category`
+--
+ALTER TABLE `category`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `client_address`
+--
+ALTER TABLE `client_address`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `unique_user_address_combination` (`id_user`,`id_address`),
+  ADD KEY `fk_client_address_address` (`id_address`);
+
+--
+-- Index pour la table `discount_coupon`
+--
+ALTER TABLE `discount_coupon`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `unique_user_combination` (`id_user`);
+
+--
+-- Index pour la table `order`
+--
+ALTER TABLE `order`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `unique_user_address_combination` (`id_user`,`id_address`),
+  ADD KEY `id_address` (`id_address`);
+
+--
+-- Index pour la table `order_product`
+--
+ALTER TABLE `order_product`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `unique_order_product_combination` (`id_order`,`id_product`),
+  ADD KEY `fk_order_product_product` (`id_product`);
+
+--
+-- Index pour la table `product`
+--
+ALTER TABLE `product`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `unique_category_combination` (`id_category`);
+
+--
+-- Index pour la table `promotion`
+--
+ALTER TABLE `promotion`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `unique_product_combination` (`id_product`);
+
+--
+-- Index pour la table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT pour les tables déchargées
+--
+
+--
+-- AUTO_INCREMENT pour la table `address`
+--
+ALTER TABLE `address`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `category`
+--
+ALTER TABLE `category`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `client_address`
+--
+ALTER TABLE `client_address`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `discount_coupon`
+--
+ALTER TABLE `discount_coupon`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `order`
+--
+ALTER TABLE `order`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `order_product`
+--
+ALTER TABLE `order_product`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `product`
+--
+ALTER TABLE `product`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `promotion`
+--
+ALTER TABLE `promotion`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Contraintes pour les tables déchargées
+--
+
+--
+-- Contraintes pour la table `client_address`
+--
+ALTER TABLE `client_address`
+  ADD CONSTRAINT `client_address_ibfk_1` FOREIGN KEY (`id_address`) REFERENCES `address` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `client_address_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`) ON DELETE CASCADE;
+
+--
+-- Contraintes pour la table `discount_coupon`
+--
+ALTER TABLE `discount_coupon`
+  ADD CONSTRAINT `discount_coupon_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`) ON DELETE CASCADE;
+
+--
+-- Contraintes pour la table `order`
+--
+ALTER TABLE `order`
+  ADD CONSTRAINT `order_ibfk_1` FOREIGN KEY (`id_address`) REFERENCES `address` (`id`),
+  ADD CONSTRAINT `order_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`);
+
+--
+-- Contraintes pour la table `order_product`
+--
+ALTER TABLE `order_product`
+  ADD CONSTRAINT `order_product_ibfk_1` FOREIGN KEY (`id_order`) REFERENCES `order` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `order_product_ibfk_2` FOREIGN KEY (`id_product`) REFERENCES `product` (`id`);
+
+--
+-- Contraintes pour la table `product`
+--
+ALTER TABLE `product`
+  ADD CONSTRAINT `product_ibfk_1` FOREIGN KEY (`id_category`) REFERENCES `category` (`id`) ON DELETE SET NULL;
+
+--
+-- Contraintes pour la table `promotion`
+--
+ALTER TABLE `promotion`
+  ADD CONSTRAINT `promotion_ibfk_1` FOREIGN KEY (`id_product`) REFERENCES `product` (`id`) ON DELETE CASCADE;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
