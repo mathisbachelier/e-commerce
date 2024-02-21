@@ -19,11 +19,11 @@
                 <tbody>
                     <?php foreach($params['porducts'] as $porduct): ?>
                         <tr>
-                            <td style="text-align: center;"><?= $porduct->Product_name ?></td>
-                            <td style="text-align: center;"><?= $porduct->Price_excluding_taxes ?></td>
-                            <td style="text-align: center;"><?= $porduct->Stock ?></td>
-                            <td style="text-align: center;"><a href="/productManagement/edit/<?= $porduct->Product_id ?>">Modifier</a></td>
-                            <td style="text-align: center;"><a href="/productManagement/delete/<?= $porduct->Product_id ?>">Supprimer</a></td> 
+                            <td style="text-align: center;"><?= $porduct->name ?></td>
+                            <td style="text-align: center;"><?= $porduct->price ?></td>
+                            <td style="text-align: center;"><?= $porduct->stock ?></td>
+                            <td style="text-align: center;"><a href="/E-Commerce-BTS-SIO/E-Commerce/productManagement/edit/<?= $porduct->id ?>">Modifier</a></td>
+                            <td style="text-align: center;"><a href="/E-Commerce-BTS-SIO/E-Commerce/productManagement/destroy/<?= $porduct->id ?>">Supprimer</a></td> 
                         </tr>
                     <?php endforeach ?>
                 </tbody>
