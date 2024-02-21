@@ -17,7 +17,8 @@ $router = new Router($url);
 $router -> get('/productManagement', 'App\controllers\productManagementController@index');
 $router -> get('/productManagement/edit/:id', 'App\controllers\productManagementController@edit');
 $router -> post('/productManagement/edit/:id', 'App\controllers\productManagementController@update');
-$router -> post('/productManagement/destroy/:id', 'App\controllers\productManagementController@destroy');
+$router -> post('/productManagement/delete/:id', 'App\controllers\productManagementController@destroy');
+$router -> get('/productManagement/create', 'App\controllers\productManagementController@create');
 
 try{
      $router->run(); 

@@ -23,11 +23,20 @@
                             <td style="text-align: center;"><?= $porduct->price ?></td>
                             <td style="text-align: center;"><?= $porduct->stock ?></td>
                             <td style="text-align: center;"><a href="/E-Commerce-BTS-SIO/E-Commerce/productManagement/edit/<?= $porduct->id ?>">Modifier</a></td>
-                            <td style="text-align: center;"><a href="/E-Commerce-BTS-SIO/E-Commerce/productManagement/destroy/<?= $porduct->id ?>">Supprimer</a></td> 
+                            <td style="text-align: center;">
+                                <form action="/E-Commerce-BTS-SIO/E-Commerce/productManagement/delete/<?= $porduct->id ?>" method="post" style="display: inline;">
+                                    <button type="submit" class="btn btn-outline-danger">Supprimer</button>
+                                </form>
+                            </td>
                         </tr>
                     <?php endforeach ?>
                 </tbody>
             </table>
+        </div>
+    </div>
+    <div class="col-2 offset-5">
+        <div class="row">
+            <button type="button" class="btn btn-outline-primary" onclick="window.location.href='/E-Commerce-BTS-SIO/E-Commerce/productManagement/create'">Ajouter un produit</button>
         </div>
     </div>
 </div>

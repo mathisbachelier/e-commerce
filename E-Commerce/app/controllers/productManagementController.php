@@ -23,8 +23,8 @@ class productManagementController extends Controller{
 
     public function update(int $id)
     {
-        $porduct = new Product($this->getDB());
-        $result = $porduct->update($id, $_POST);
+        $product = new Product($this->getDB());
+        $result = $product->update($id, $_POST);
         if($result){
             return header('location: /E-Commerce-BTS-SIO/E-Commerce/productManagement');
         }
@@ -32,10 +32,15 @@ class productManagementController extends Controller{
 
     public function destroy(int $id)
     {
-        $post = new Post($this->getDB());
-        $result = $post->destroy($id);
+        $porduct = new Product($this->getDB());
+        $result = $porduct->destroy($id);
         if($result){
-            return header('location: /mvc/admin/posts/');
+            return header('location: /E-Commerce-BTS-SIO/E-Commerce/productManagement');
         }
+    }
+
+    public function create()
+    {
+        return $this->view("productManagement.create");
     }
 }
