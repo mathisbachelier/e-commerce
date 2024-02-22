@@ -1,13 +1,13 @@
 <?php
 namespace App\Controllers;
 
-use App\Models\OrderManagmentModel;
+use App\Models\OrderManagementModel;
 
 
-class OrderManagmentController extends Controller{
+class OrderManagementController extends Controller{
 
     public function index(){
-        $model = new OrderManagmentModel($this->getDB());
+        $model = new OrderManagementModel($this->getDB());
         $orders = $model->all();
 
         
@@ -15,7 +15,7 @@ class OrderManagmentController extends Controller{
         return $this->view('oders', compact('orders'));
     }
     public function destroy(int $id){
-        $model = new OrderManagmentModel($this->getDB());
+        $model = new OrderManagementModel($this->getDB());
         $model->destroy($id);
         
         return header('location: /e-commerce-BTS-SIO/E-Commerce/orders/');
@@ -23,7 +23,7 @@ class OrderManagmentController extends Controller{
     }
     public function show(int $id)
     {
-      $orders = new OrderManagmentModel($this->getDB());
+      $orders = new OrderManagementModel($this->getDB());
       $order =$orders->findById($id);
        
          return $this->view("order",compact('order'));

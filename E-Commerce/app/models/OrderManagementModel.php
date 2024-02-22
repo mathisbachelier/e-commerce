@@ -3,7 +3,7 @@ namespace App\Models;
 use database\DBconnection;
 
 
-class OrderManagmentModel extends Model{
+class OrderManagementModel extends Model{
     protected $table = 'commande';
     
 
