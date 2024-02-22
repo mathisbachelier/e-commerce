@@ -26,8 +26,9 @@ $router -> get('/productManagement/create', 'App\controllers\productManagementCo
 $router -> post('/productManagement/create', 'App\controllers\productManagementController@createProduct');
 
 $router->get('/user_management','App\controllers\UserManagementController@index');
-$router->post('/user_management/deleteUser/:Id_user','App\controllers\UserManagementController@deleteUser');
-$router->post('/user_management/changeUserRole/:role','App\controllers\UserManagementController@deleteUser');
+$router->post('/user_management/deleteUser/:id_user','App\controllers\UserManagementController@deleteUser');
+$router->post('/user_management/changeUserRole/:id_user','App\controllers\UserManagementController@changeUserRole');
+$router->post('/user_management/searchUser/','App\controllers\UserManagementController@researchUser');
 
 try{
      $router->run(); 
