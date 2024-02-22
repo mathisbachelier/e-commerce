@@ -5,7 +5,7 @@ use Router\Router;
 $url = $_GET['url'];
 define('VIEWS',dirname(__DIR__) . DIRECTORY_SEPARATOR . 'views'.DIRECTORY_SEPARATOR);
 define('SCRIPTS',dirname($_SERVER['SCRIPT_NAME']) . DIRECTORY_SEPARATOR );
-define('DB_NAME',"name_of_your_database");
+define('DB_NAME',"e_commerce");
 define('DB_HOST',"127.0.0.1");
 define('DB_USER',"root");
 define('DB_PASSWORD',"");
@@ -15,6 +15,9 @@ $router = new Router($url);
 // Exemple de route simple POST ou GET : 
 // $router->get/post('url','chemain du controller + @ methode');
 
+$router->get('/user_management','App\controllers\UserManagementController@index');
+$router->post('/user_management/deleteUser/:Id_user','App\controllers\UserManagementController@deleteUser');
+$router->post('/user_management/changeUserRole/:role','App\controllers\UserManagementController@deleteUser');
 try{
      $router->run(); 
 } catch(\Exception $e) {
