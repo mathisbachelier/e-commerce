@@ -14,7 +14,7 @@ abstract class Model {
 
     public function all():array
     {
-        return $this->query("SELECT * FROM {$this->table} ");
+        return $this->query("SELECT * FROM {$this->table}");
     }
 
     public function findById(int $id)

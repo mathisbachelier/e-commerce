@@ -14,6 +14,12 @@ $router = new Router($url);
 
 // Exemple de route simple POST ou GET : 
 // $router->get/post('url','chemain du controller + @ methode');
+$router -> get('/productManagement', 'App\controllers\productManagementController@index');
+$router -> get('/productManagement/edit/:id', 'App\controllers\productManagementController@edit');
+$router -> post('/productManagement/edit/:id', 'App\controllers\productManagementController@update');
+$router -> post('/productManagement/delete/:id', 'App\controllers\productManagementController@destroy');
+$router -> get('/productManagement/create', 'App\controllers\productManagementController@create');
+$router -> post('/productManagement/create', 'App\controllers\productManagementController@createProduct');
 
 $router->get('/user_management','App\controllers\UserManagementController@index');
 $router->post('/user_management/deleteUser/:Id_user','App\controllers\UserManagementController@deleteUser');

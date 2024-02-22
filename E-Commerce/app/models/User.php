@@ -11,9 +11,9 @@ class User extends Model
             return $this->query("SELECT * from {$this->table} WHERE email = ?",[$email],true);
     }
 
-    public function destroyUser(int $Id_user)
+    public function destroyUser(int $id_user)
     {
-        return $this->query("DELETE FROM {$this->table} WHERE Id_user = ?", [$Id_user]);
+        return $this->query("DELETE FROM {$this->table} WHERE id = ?", [$id_user]);
     }
 
 }

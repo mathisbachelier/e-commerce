@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : jeu. 15 fév. 2024 à 17:06
--- Version du serveur : 10.4.28-MariaDB
--- Version de PHP : 8.2.4
+-- Généré le : mer. 21 fév. 2024 à 21:03
+-- Version du serveur : 10.4.32-MariaDB
+-- Version de PHP : 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,8 +28,8 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `address` (
-  `Id_address` int(11) NOT NULL,
-  `Address` varchar(255) DEFAULT NULL
+  `id` int(11) NOT NULL,
+  `address` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -39,8 +39,8 @@ CREATE TABLE `address` (
 --
 
 CREATE TABLE `category` (
-  `Id_category` int(11) NOT NULL,
-  `Category_name` varchar(255) DEFAULT NULL
+  `id` int(11) NOT NULL,
+  `name` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -50,9 +50,9 @@ CREATE TABLE `category` (
 --
 
 CREATE TABLE `client_address` (
-  `Id_client_address` int(11) NOT NULL,
-  `Id_user` int(11) DEFAULT NULL,
-  `Id_address` int(11) DEFAULT NULL
+  `id` int(11) NOT NULL,
+  `id_user` int(11) DEFAULT NULL,
+  `id_address` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -62,12 +62,12 @@ CREATE TABLE `client_address` (
 --
 
 CREATE TABLE `discount_coupon` (
-  `Id_discount_coupon` int(11) NOT NULL,
-  `Code` varchar(255) DEFAULT NULL,
-  `Discount_value` float DEFAULT NULL,
-  `Start_date` date DEFAULT NULL,
-  `End_date` date DEFAULT NULL,
-  `Id_user` int(11) DEFAULT NULL
+  `id` int(11) NOT NULL,
+  `code` varchar(255) DEFAULT NULL,
+  `discount_value` float DEFAULT NULL,
+  `start_date` date DEFAULT NULL,
+  `end_date` date DEFAULT NULL,
+  `id_user` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -77,12 +77,12 @@ CREATE TABLE `discount_coupon` (
 --
 
 CREATE TABLE `order` (
-  `Id_order` int(11) NOT NULL,
-  `Order_number` varchar(255) DEFAULT NULL,
-  `Status` varchar(255) DEFAULT NULL,
-  `Price_excluding_taxes` float DEFAULT NULL,
-  `Id_user` int(11) DEFAULT NULL,
-  `Id_address` int(11) DEFAULT NULL
+  `id` int(11) NOT NULL,
+  `order_number` varchar(255) DEFAULT NULL,
+  `status` varchar(255) DEFAULT NULL,
+  `price` float DEFAULT NULL,
+  `id_user` int(11) DEFAULT NULL,
+  `id_address` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -92,10 +92,10 @@ CREATE TABLE `order` (
 --
 
 CREATE TABLE `order_product` (
-  `Id_order_product` int(11) NOT NULL,
-  `Id_order` int(11) DEFAULT NULL,
-  `Id_product` int(11) DEFAULT NULL,
-  `Quantity` int(11) DEFAULT NULL
+  `id` int(11) NOT NULL,
+  `id_order` int(11) DEFAULT NULL,
+  `id_product` int(11) DEFAULT NULL,
+  `quantity` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -105,12 +105,12 @@ CREATE TABLE `order_product` (
 --
 
 CREATE TABLE `product` (
-  `Id_product` int(11) NOT NULL,
-  `Product_name` varchar(255) DEFAULT NULL,
-  `Description` text DEFAULT NULL,
-  `Stock` int(11) DEFAULT NULL,
-  `Price_excluding_taxes` float DEFAULT NULL,
-  `Id_category` int(11) DEFAULT NULL
+  `id` int(11) NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `description` text DEFAULT NULL,
+  `stock` int(11) DEFAULT NULL,
+  `price` float DEFAULT NULL,
+  `id_category` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -120,12 +120,12 @@ CREATE TABLE `product` (
 --
 
 CREATE TABLE `promotion` (
-  `Id_promotion` int(11) NOT NULL,
-  `Promotion_name` varchar(255) DEFAULT NULL,
-  `Promotion_value` float DEFAULT NULL,
-  `Start_date` date DEFAULT NULL,
-  `End_date` date DEFAULT NULL,
-  `Id_product` int(11) DEFAULT NULL
+  `id` int(11) NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `promotion_value` float DEFAULT NULL,
+  `start_date` date DEFAULT NULL,
+  `end_date` date DEFAULT NULL,
+  `id_product` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -134,15 +134,15 @@ CREATE TABLE `promotion` (
 -- Structure de la table `user`
 --
 
-CREATE TABLE `user` (
-  `Id_user` int(11) NOT NULL,
-  `Email` varchar(255) DEFAULT NULL,
-  `Password` varchar(255) DEFAULT NULL,
-  `Last_name` varchar(255) DEFAULT NULL,
-  `First_name` varchar(255) DEFAULT NULL,
-  `role` binary(4) NOT NULL,
-  `Date_of_birth` date DEFAULT NULL,
-  `Gender` varchar(10) DEFAULT NULL
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `last_name` varchar(255) DEFAULT NULL,
+  `first_name` varchar(255) DEFAULT NULL,
+  `role` int(11) NOT NULL,
+  `date_of_birth` date DEFAULT NULL,
+  `gender` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -153,64 +153,64 @@ CREATE TABLE `user` (
 -- Index pour la table `address`
 --
 ALTER TABLE `address`
-  ADD PRIMARY KEY (`Id_address`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Index pour la table `category`
 --
 ALTER TABLE `category`
-  ADD PRIMARY KEY (`Id_category`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Index pour la table `client_address`
 --
 ALTER TABLE `client_address`
-  ADD PRIMARY KEY (`Id_client_address`),
-  ADD UNIQUE KEY `Id_client` (`Id_user`,`Id_address`),
-  ADD KEY `fk_client_address_address` (`Id_address`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `unique_user_address_combination` (`id_user`,`id_address`),
+  ADD KEY `fk_client_address_address` (`id_address`);
 
 --
 -- Index pour la table `discount_coupon`
 --
 ALTER TABLE `discount_coupon`
-  ADD PRIMARY KEY (`Id_discount_coupon`),
-  ADD UNIQUE KEY `Id_client` (`Id_user`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `unique_user_combination` (`id_user`);
 
 --
 -- Index pour la table `order`
 --
 ALTER TABLE `order`
-  ADD PRIMARY KEY (`Id_order`),
-  ADD UNIQUE KEY `Id_client` (`Id_user`),
-  ADD UNIQUE KEY `Id_address` (`Id_address`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `unique_user_address_combination` (`id_user`,`id_address`),
+  ADD KEY `id_address` (`id_address`);
 
 --
 -- Index pour la table `order_product`
 --
 ALTER TABLE `order_product`
-  ADD PRIMARY KEY (`Id_order_product`),
-  ADD UNIQUE KEY `Id_order` (`Id_order`,`Id_product`),
-  ADD KEY `fk_order_product_product` (`Id_product`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `unique_order_product_combination` (`id_order`,`id_product`),
+  ADD KEY `fk_order_product_product` (`id_product`);
 
 --
 -- Index pour la table `product`
 --
 ALTER TABLE `product`
-  ADD PRIMARY KEY (`Id_product`),
-  ADD UNIQUE KEY `Id_category` (`Id_category`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `unique_category_combination` (`id_category`);
 
 --
 -- Index pour la table `promotion`
 --
 ALTER TABLE `promotion`
-  ADD PRIMARY KEY (`Id_promotion`),
-  ADD UNIQUE KEY `Id_product` (`Id_product`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `unique_product_combination` (`id_product`);
 
 --
 -- Index pour la table `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`Id_user`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT pour les tables déchargées
@@ -220,55 +220,55 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT pour la table `address`
 --
 ALTER TABLE `address`
-  MODIFY `Id_address` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `category`
 --
 ALTER TABLE `category`
-  MODIFY `Id_category` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `client_address`
 --
 ALTER TABLE `client_address`
-  MODIFY `Id_client_address` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `discount_coupon`
 --
 ALTER TABLE `discount_coupon`
-  MODIFY `Id_discount_coupon` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `order`
 --
 ALTER TABLE `order`
-  MODIFY `Id_order` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `order_product`
 --
 ALTER TABLE `order_product`
-  MODIFY `Id_order_product` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `product`
 --
 ALTER TABLE `product`
-  MODIFY `Id_product` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `promotion`
 --
 ALTER TABLE `promotion`
-  MODIFY `Id_promotion` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `Id_user` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Contraintes pour les tables déchargées
@@ -278,34 +278,40 @@ ALTER TABLE `user`
 -- Contraintes pour la table `client_address`
 --
 ALTER TABLE `client_address`
-  ADD CONSTRAINT `fk_client_address_address` FOREIGN KEY (`Id_address`) REFERENCES `address` (`Id_address`),
-  ADD CONSTRAINT `fk_client_address_client` FOREIGN KEY (`Id_user`) REFERENCES `user` (`Id_user`);
+  ADD CONSTRAINT `client_address_ibfk_1` FOREIGN KEY (`id_address`) REFERENCES `address` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `client_address_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`) ON DELETE CASCADE;
 
 --
 -- Contraintes pour la table `discount_coupon`
 --
 ALTER TABLE `discount_coupon`
-  ADD CONSTRAINT `fk_discount_coupon_client` FOREIGN KEY (`Id_user`) REFERENCES `user` (`Id_user`);
+  ADD CONSTRAINT `discount_coupon_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`) ON DELETE CASCADE;
 
 --
 -- Contraintes pour la table `order`
 --
 ALTER TABLE `order`
-  ADD CONSTRAINT `fk_order_address` FOREIGN KEY (`Id_address`) REFERENCES `address` (`Id_address`),
-  ADD CONSTRAINT `fk_order_client` FOREIGN KEY (`Id_user`) REFERENCES `user` (`Id_user`);
+  ADD CONSTRAINT `order_ibfk_1` FOREIGN KEY (`id_address`) REFERENCES `address` (`id`),
+  ADD CONSTRAINT `order_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`);
 
 --
 -- Contraintes pour la table `order_product`
 --
 ALTER TABLE `order_product`
-  ADD CONSTRAINT `fk_order_product_order` FOREIGN KEY (`Id_order`) REFERENCES `order` (`Id_order`),
-  ADD CONSTRAINT `fk_order_product_product` FOREIGN KEY (`Id_product`) REFERENCES `product` (`Id_product`);
+  ADD CONSTRAINT `order_product_ibfk_1` FOREIGN KEY (`id_order`) REFERENCES `order` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `order_product_ibfk_2` FOREIGN KEY (`id_product`) REFERENCES `product` (`id`);
+
+--
+-- Contraintes pour la table `product`
+--
+ALTER TABLE `product`
+  ADD CONSTRAINT `product_ibfk_1` FOREIGN KEY (`id_category`) REFERENCES `category` (`id`) ON DELETE SET NULL;
 
 --
 -- Contraintes pour la table `promotion`
 --
 ALTER TABLE `promotion`
-  ADD CONSTRAINT `fk_promotion_product` FOREIGN KEY (`Id_product`) REFERENCES `product` (`Id_product`);
+  ADD CONSTRAINT `promotion_ibfk_1` FOREIGN KEY (`id_product`) REFERENCES `product` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

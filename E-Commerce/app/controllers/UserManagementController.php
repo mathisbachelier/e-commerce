@@ -11,10 +11,10 @@ class UserManagementController extends Controller{
 
         return $this->view('userManagement.userList', compact('users'));
     }
-public function deleteUser($Id_user)
+public function deleteUser($id_user)
 {
     $model = new User($this->getDB());
-    $deleted = $model->destroyUser($Id_user);
+    $deleted = $model->destroyUser($id_user);
 
     return header('location: /E-Commerce-BTS-SIO/E-Commerce/user_management');
 }
