@@ -79,7 +79,7 @@ CREATE TABLE `discount_coupon` (
 CREATE TABLE `order` (
   `id` int(11) NOT NULL,
   `order_number` varchar(255) DEFAULT NULL,
-  `status` varchar(255) DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
   `price` float DEFAULT NULL,
   `id_user` int(11) DEFAULT NULL,
   `id_address` int(11) DEFAULT NULL
