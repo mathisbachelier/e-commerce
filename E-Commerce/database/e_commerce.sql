@@ -40,7 +40,7 @@ CREATE TABLE `address` (
 
 CREATE TABLE `category` (
   `id` int(11) NOT NULL,
-  `category_name` varchar(255) DEFAULT NULL
+  `name` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -80,7 +80,7 @@ CREATE TABLE `order` (
   `id` int(11) NOT NULL,
   `order_number` varchar(255) DEFAULT NULL,
   `status` varchar(255) DEFAULT NULL,
-  `price_excluding_taxes` float DEFAULT NULL,
+  `price` float DEFAULT NULL,
   `id_user` int(11) DEFAULT NULL,
   `id_address` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -106,10 +106,10 @@ CREATE TABLE `order_product` (
 
 CREATE TABLE `product` (
   `id` int(11) NOT NULL,
-  `product_name` varchar(255) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
   `description` text DEFAULT NULL,
   `stock` int(11) DEFAULT NULL,
-  `price_excluding_taxes` float DEFAULT NULL,
+  `price` float DEFAULT NULL,
   `id_category` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -121,7 +121,7 @@ CREATE TABLE `product` (
 
 CREATE TABLE `promotion` (
   `id` int(11) NOT NULL,
-  `promotion_name` varchar(255) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
   `promotion_value` float DEFAULT NULL,
   `start_date` date DEFAULT NULL,
   `end_date` date DEFAULT NULL,
