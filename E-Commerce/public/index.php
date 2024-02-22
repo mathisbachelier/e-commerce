@@ -17,6 +17,7 @@ $router = new Router($url);
 $router->get('/orders', 'App\controllers\OrderManagementController@index');
 $router->get('/orders/:id','App\controllers\OrderManagementController@show');
 $router->post('/orders/delete/:id','App\controllers\OrderManagementController@destroy');
+
 $router -> get('/productManagement', 'App\controllers\productManagementController@index');
 $router -> get('/productManagement/edit/:id', 'App\controllers\productManagementController@edit');
 $router -> post('/productManagement/edit/:id', 'App\controllers\productManagementController@update');
