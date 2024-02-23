@@ -1,6 +1,6 @@
 <p>Liste des utilisateurs</p>
 
-<form style="display:inline" action="/E-Commerce-BTS-SIO/E-Commerce/user_management/searchUser" method="POST">
+<form style="display:inline" action="/E-Commerce-BTS-SIO/E-Commerce/user_management/search" method="POST">
   <input type="text" name="search" placeholder="Search..">
   <input type="submit" value="Rechercher">
 </form>
@@ -9,11 +9,11 @@
 foreach($params['users'] as $user): ?>
     <div class="card mb-3">
       <div class="card-body">
-        <h2> <?= $user->email ?></h2>
-        <form style="display:inline"  action="/E-Commerce-BTS-SIO/E-Commerce/user_management/deleteUser/<?= $user->id; ?>" method="POST">
+        <a href="/E-Commerce-BTS-SIO/E-Commerce/user_management/<?= $user->id; ?>"><h2> <?= $user->email ?></h2></a>
+        <form style="display:inline"  action="/E-Commerce-BTS-SIO/E-Commerce/user_management/delete/<?= $user->id; ?>" method="POST">
           <input type="submit" class="btn btn-danger" value="supprimer"> 
         </form>
-        <form style="display:inline"  action="/E-Commerce-BTS-SIO/E-Commerce/user_management/changeUserRole/<?= $user->id; ?>" method="POST">
+        <form style="display:inline"  action="/E-Commerce-BTS-SIO/E-Commerce/user_management/edit/<?= $user->id; ?>" method="POST">
         <select name="role">
             <option <?= $user->role == 0 ? 'selected' : '' ?> value="0">Admin</option>
             <option <?= $user->role == 1 ? 'selected' : '' ?> value="1">Seller</option>
