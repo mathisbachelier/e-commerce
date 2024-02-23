@@ -13,6 +13,14 @@ class productManagementController extends Controller{
         return $this->view("productManagement.index", compact('products'));
     }
 
+    public function research()
+    {
+        $product = new Product($this->getDB());
+        $products = $product->findByNameAndCategory($_POST['name'], $_POST['category_id']);
+
+        return $this->view("productManagement.index", compact('products'));
+    }
+
     public function edit(int $id)
     {
         $product = new Product($this->getDB());
