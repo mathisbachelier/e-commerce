@@ -5,10 +5,14 @@ use App\Models\User;
 
 class UserController extends Controller{
 
-    // public function login()
-    // {
-    //     return $this->view("auth.login");
-    // }
+    public function createUser()
+    {
+        $user = new User($this->getDB());
+        var_dump($_POST);
+        $user->create($_POST);
+
+        return $this->view("auth.index");
+    }
 
     // public function loginPost()
     // {

@@ -4,7 +4,7 @@ namespace App\Models;
 use database\DBconnection;
 class User extends Model
 {
-    protected $table ="users";
+    protected $table ="user";
     
     public function getByEmail(string $email):User
     {

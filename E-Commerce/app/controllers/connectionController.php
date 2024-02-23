@@ -5,14 +5,14 @@ use App\Models\User;
 
 class connectionController extends Controller{
 
-    public function login()
+    public function index()
     {
-        return $this->view("auth.login");
+        return $this->view("auth.index");
     }
 
-    public function signUp()
+    public function create()
     {
-        return $this->view("auth.signup");
+        return $this->view("auth.create");
     }
 
     public function loginPost()
