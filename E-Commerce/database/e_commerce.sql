@@ -38,7 +38,7 @@ CREATE TABLE `address` (
 -- Structure de la table `category`
 --
 
-CREATE TABLE `category` (
+CREATE TABLE `categories` (
   `id` int(11) NOT NULL,
   `name` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -76,7 +76,7 @@ CREATE TABLE `discount_coupon` (
 -- Structure de la table `order`
 --
 
-CREATE TABLE `order` (
+CREATE TABLE `orders` (
   `id` int(11) NOT NULL,
   `order_number` varchar(255) DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
@@ -91,7 +91,7 @@ CREATE TABLE `order` (
 -- Structure de la table `order_product`
 --
 
-CREATE TABLE `order_product` (
+CREATE TABLE `order_products` (
   `id` int(11) NOT NULL,
   `id_order` int(11) DEFAULT NULL,
   `id_product` int(11) DEFAULT NULL,
@@ -104,7 +104,7 @@ CREATE TABLE `order_product` (
 -- Structure de la table `product`
 --
 
-CREATE TABLE `product` (
+CREATE TABLE `products` (
   `id` int(11) NOT NULL,
   `name` varchar(255) DEFAULT NULL,
   `description` text DEFAULT NULL,
@@ -119,7 +119,7 @@ CREATE TABLE `product` (
 -- Structure de la table `promotion`
 --
 
-CREATE TABLE `promotion` (
+CREATE TABLE `promotions` (
   `id` int(11) NOT NULL,
   `name` varchar(255) DEFAULT NULL,
   `promotion_value` float DEFAULT NULL,

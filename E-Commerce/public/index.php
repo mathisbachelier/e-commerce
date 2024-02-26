@@ -14,9 +14,13 @@ $router = new Router($url);
 
 // Exemple de route simple POST ou GET : 
 // $router->get/post('url','chemain du controller + @ methode');
-$router->get('/orders', 'App\controllers\OrderManagementController@index');
-$router->get('/orders/:id','App\controllers\OrderManagementController@show');
-$router->post('/orders/delete/:id','App\controllers\OrderManagementController@destroy');
+$router->get('/orderManagement/orders', 'App\controllers\OrderManagementController@index');
+$router->get('/orderManagement/orders/:id','App\controllers\OrderManagementController@show');
+$router->post('/orderManagement/orders/delete/:id','App\controllers\OrderManagementController@destroy');
+$router->post('/orderManagement/orders/validate/:id','App\controllers\OrderManagementController@accept');
+$router->post('/orderManagement/orders/validateOrder/:id','App\controllers\OrderManagementController@validate');
+$router->post('/orderManagement/orders/archive/:id','App\controllers\OrderManagementController@archive');
+$router->get('/orderManagement/archived', 'App\controllers\OrderManagementController@archived');
 
 $router -> get('/productManagement', 'App\controllers\productManagementController@index');
 $router -> get('/productManagement/edit/:id', 'App\controllers\productManagementController@edit');
@@ -32,5 +36,5 @@ $router->post('/user_management/changeUserRole/:role','App\controllers\UserManag
 try{
      $router->run(); 
 } catch(\Exception $e) {
-     return $e->error404();    
+    echo $e->getMessage();   
 }   
