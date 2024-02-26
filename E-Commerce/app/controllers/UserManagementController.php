@@ -7,6 +7,7 @@ class UserManagementController extends Controller{
     public function index(){
 
         $model = new User($this->getDB());
+        
         $users = $model->all();
 
         return $this->view('userManagement.userList', compact('users'));
