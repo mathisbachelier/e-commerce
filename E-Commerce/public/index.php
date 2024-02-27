@@ -31,6 +31,10 @@ $router->post('/user_management/edit/:id','App\controllers\UserManagementControl
 $router->post('/user_management/search/','App\controllers\UserManagementController@research');
 $router->get('/user_management/:id','App\controllers\UserManagementController@show');
 
+$router->get('/categoryManagement','App\controllers\CategoryManagementController@index');
+$router->post('/categoryManagement/delete/:id','App\controllers\CategoryManagementController@destroy');
+$router->post('/categoryManagement/search/','App\controllers\CategoryManagementController@research');
+
 try{
      $router->run(); 
 } catch(\Exception $e) {
