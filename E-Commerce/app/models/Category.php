@@ -23,4 +23,10 @@ class Category extends Model
         return $this->query("SELECT * FROM {$this->table} WHERE name like ?",[$search]);
     }
 
+    public function changeRole(int $id,int $role)
+    {
+        $stmt =  $this->db->getPDO()->prepare("UPDATE {$this->table} SET role = ? WHERE id = ?");
+        $stmt->execute([$role, $id]);
+
+}
 }

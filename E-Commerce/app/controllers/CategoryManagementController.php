@@ -29,4 +29,27 @@ public function research()
     return $this->view('categoryManagement.index', compact('categories'));
 }
 
+public function update(int $id)
+{
+    $category = new Category($this->getDB());
+    $result = $category->update($id, $_POST);
+    if($result){
+        return header('location: /E-Commerce-BTS-SIO/E-Commerce/categoryManagement');
+    }
+}
+
+public function create()
+    {
+        return $this->view("categoryManagement.create");
+    }
+
+    public function createCategory()
+    {
+        $category = new Category($this->getDB());
+        $result = $category->create($_POST);
+        if($result){
+            return header('location: /E-Commerce-BTS-SIO/E-Commerce/categoryManagement');
+        }
+    }
+
 }

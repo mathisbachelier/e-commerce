@@ -34,7 +34,9 @@ $router->get('/user_management/:id','App\controllers\UserManagementController@sh
 $router->get('/categoryManagement','App\controllers\CategoryManagementController@index');
 $router->post('/categoryManagement/delete/:id','App\controllers\CategoryManagementController@destroy');
 $router->post('/categoryManagement/search/','App\controllers\CategoryManagementController@research');
-
+$router->post('/categoryManagement/edit/:id', 'App\controllers\CategoryManagementController@update');
+$router->get('/categoryManagement/create', 'App\controllers\CategoryManagementController@create');
+$router->post('/categoryManagement/create', 'App\controllers\CategoryManagementController@createCategory');
 try{
      $router->run(); 
 } catch(\Exception $e) {
