@@ -10,13 +10,38 @@ class UserManagementController extends Controller{
         
         $users = $model->all();
 
-        return $this->view('userManagement.userList', compact('users'));
+        return $this->view('userManagement.index', compact('users'));
     }
-public function deleteUser($id_user)
+public function destroy($id)
 {
     $model = new User($this->getDB());
-    $deleted = $model->destroyUser($id_user);
+    $deleted = $model->destroyUser($id);
 
     return header('location: /E-Commerce-BTS-SIO/E-Commerce/user_management');
 }
+
+public function update($id)
+{
+    $model = new User($this->getDB());
+    $deleted = $model->changeRole($id,$_POST['role']);
+
+    return header('location: /E-Commerce-BTS-SIO/E-Commerce/user_management');
+}
+
+public function research()
+{
+    $model = new User($this->getDB());
+    $users = $model->searchUser($_POST['search']);
+
+    return $this->view('userManagement.index', compact('users'));
+}
+
+public function show($id)
+{
+    $model = new User($this->getDB());
+    $user = $model->findById($id);
+
+    return $this->view('userManagement.show', compact('user'));
+}
+
 } 

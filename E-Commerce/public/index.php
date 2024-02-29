@@ -30,9 +30,17 @@ $router -> get('/productManagement/create', 'App\controllers\productManagementCo
 $router -> post('/productManagement/create', 'App\controllers\productManagementController@createProduct');
 
 $router->get('/user_management','App\controllers\UserManagementController@index');
-$router->post('/user_management/deleteUser/:Id_user','App\controllers\UserManagementController@deleteUser');
-$router->post('/user_management/changeUserRole/:role','App\controllers\UserManagementController@deleteUser');
+$router->post('/user_management/delete/:id','App\controllers\UserManagementController@destroy');
+$router->post('/user_management/edit/:id','App\controllers\UserManagementController@update');
+$router->post('/user_management/search/','App\controllers\UserManagementController@research');
+$router->get('/user_management/:id','App\controllers\UserManagementController@show');
 
+$router->get('/categoryManagement','App\controllers\CategoryManagementController@index');
+$router->post('/categoryManagement/delete/:id','App\controllers\CategoryManagementController@destroy');
+$router->post('/categoryManagement/search/','App\controllers\CategoryManagementController@research');
+$router->post('/categoryManagement/edit/:id', 'App\controllers\CategoryManagementController@update');
+$router->get('/categoryManagement/create', 'App\controllers\CategoryManagementController@create');
+$router->post('/categoryManagement/create', 'App\controllers\CategoryManagementController@createCategory');
 try{
      $router->run(); 
 } catch(\Exception $e) {
