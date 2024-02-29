@@ -4,12 +4,7 @@ namespace App\Models;
 use database\DBconnection;
 class User extends Model
 {
-    protected $table ="users";
-    
-    public function getByEmail(string $email):User
-    {
-            return $this->query("SELECT * from {$this->table} WHERE email = ?",[$email],true);
-    }
+    protected $table ="user";
 
     public function getById(int $id)
     {

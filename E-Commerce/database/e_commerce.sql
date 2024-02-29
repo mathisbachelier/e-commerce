@@ -142,7 +142,7 @@ CREATE TABLE `users` (
   `first_name` varchar(255) DEFAULT NULL,
   `role` int(11) NOT NULL,
   `date_of_birth` date DEFAULT NULL,
-  `gender` varchar(10) DEFAULT NULL
+  `gender` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --

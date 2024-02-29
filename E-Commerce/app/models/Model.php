@@ -22,6 +22,16 @@ abstract class Model {
         return $this->query("select * from {$this->table} where id = ?",[$id],true);
     }
 
+    public function findByColumn($value, string $nameColumn)
+    {
+        return $this->query("select * from {$this->table} where {$nameColumn} = ?",[$value],true);
+    }
+
+    public function countByValue($value, string $nameColumn)
+    {
+        return $this->query("select count(id) as nb from {$this->table} where {$nameColumn} = ?",[$value],true);
+    }
+
     public function query(string $sql, array $param = null,bool $single=null)
     {
         $method = is_null($param) ? "query" : "prepare";

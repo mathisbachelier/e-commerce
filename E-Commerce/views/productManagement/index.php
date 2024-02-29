@@ -4,6 +4,25 @@
             <h1 class="text-center">Liste des produits</h1>
         </div>
     </div>
+    <form action="/E-Commerce-BTS-SIO/E-Commerce/productManagement/search" method="POST">
+        <div class="col-4 offset-4">
+            <div class="row">
+                <div class="col-5">
+                    <label for="name_search">Nom</label>
+                    <input type="text" name="name" id="name_search" class="form-control">
+                </div>
+                <div class="col-5">
+                    <label for="category_search">Catégorie</label>
+                    <select name="category_id" id="category_search" class="form-control">
+                        <option value=""></option>
+                    </select>
+                </div>
+                <div class="col-2" style="place-self: end;">
+                    <button type="submit" class="btn btn-outline-primary">Rechercher</button>
+                </div> 
+            </div>
+        </div>
+    </form>
     <div class="row">
         <div class="col-12">
             <table class="table table-bordered">
