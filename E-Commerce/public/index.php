@@ -21,6 +21,7 @@ $router->post('/orderManagement/orders/validate/:id','App\controllers\OrderManag
 $router->post('/orderManagement/orders/validateOrder/:id','App\controllers\OrderManagementController@validate');
 $router->post('/orderManagement/orders/archive/:id','App\controllers\OrderManagementController@archive');
 $router->get('/orderManagement/archived', 'App\controllers\OrderManagementController@archived');
+$router->get('/orderManagement/search/', 'App\controllers\OrderManagementController@search');
 
 $router -> get('/productManagement', 'App\controllers\productManagementController@index');
 $router -> get('/productManagement/edit/:id', 'App\controllers\productManagementController@edit');
@@ -32,6 +33,9 @@ $router -> post('/productManagement/create', 'App\controllers\productManagementC
 $router->get('/user_management','App\controllers\UserManagementController@index');
 $router->post('/user_management/deleteUser/:Id_user','App\controllers\UserManagementController@deleteUser');
 $router->post('/user_management/changeUserRole/:role','App\controllers\UserManagementController@deleteUser');
+
+
+$router->get('/product/show/:id', 'App\controllers\productController@show');
 
 try{
      $router->run(); 

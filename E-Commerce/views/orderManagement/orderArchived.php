@@ -1,5 +1,5 @@
 <h1>liste des commandes archivées</h1>
-<h2>voir les commandes en cours : <a href="/e-commerce-BTS-SIO/E-Commerce/orderManagement/orders" class="btn btn-primary">ici</a></h2>
+<h2>voir les commandes en cours : <a href="/e-commerce-BTS-SIO/E-Commerce/orderManagement/orders" class="btn btn-outline-primary">ici</a></h2>
 <hr>
 
 
@@ -18,7 +18,7 @@
                 archivé 
             <?php endif; ?></p>
 
-            <a href="/e-commerce-BTS-SIO/E-Commerce/orderManagement/orders/<?= $archived->order_id ?>"class="btn btn-primary">Lire l'article</a>
+            <a href="/e-commerce-BTS-SIO/E-Commerce/orderManagement/orders/<?= $archived->order_id ?>"class="btn btn-outline-primary">Lire l'article</a>
 
             
 

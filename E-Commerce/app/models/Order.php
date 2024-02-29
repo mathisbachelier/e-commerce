@@ -3,7 +3,7 @@ namespace App\Models;
 use database\DBconnection;
 
 
-class Orders extends Model{
+class Order extends Model{
     protected $table = 'orders';
 
 
@@ -42,5 +42,11 @@ class Orders extends Model{
         INNER JOIN users ON orders.id_user = users.id WHERE orders.status = 3 OR orders.status = 4 ");  
 }
     
+    public function searchOrder(string $search){
+        return $this->query("SELECT orders.id AS order_id, orders.order_number AS order_number, orders.price AS price, orders.status AS status , orders.id_address AS id_address, users.id AS user_id  , users.email AS email, users.first_name AS firstname, users.last_name AS lastname, users.gender AS gender  
+        FROM orders
+        INNER JOIN users ON orders.id_user = users.id WHERE orders.order_number LIKE ? OR users.first_name LIKE ? OR users.last_name LIKE ? OR CONCAT(users.first_name, ' ', users.last_name) LIKE ? OR users.email LIKE ?", ["%$search%","%$search%","%$search%","%$search%","%$search%"]);
+    }
+
 
 }
