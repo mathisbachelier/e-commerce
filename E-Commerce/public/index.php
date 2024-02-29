@@ -26,6 +26,7 @@ $router->post('/orderManagement/orders/validate/:id','App\controllers\OrderManag
 $router->post('/orderManagement/orders/validateOrder/:id','App\controllers\OrderManagementController@validate');
 $router->post('/orderManagement/orders/archive/:id','App\controllers\OrderManagementController@archive');
 $router->get('/orderManagement/archived', 'App\controllers\OrderManagementController@archived');
+$router->get('/orderManagement/search/', 'App\controllers\OrderManagementController@search');
 
 $router -> get('/productManagement', 'App\controllers\productManagementController@index');
 $router -> post('/productManagement/search', 'App\controllers\productManagementController@research');

@@ -10,5 +10,5 @@
 
 </ul>
 </p>
-<a class="btn btn-primary" href="/e-commerce-BTS-SIO/E-Commerce/orderManagement/orders/">Retour en arriere </a>
+<a class="btn btn-outline-primary" href="/e-commerce-BTS-SIO/E-Commerce/orderManagement/orders/">Retour en arriere </a>
 
