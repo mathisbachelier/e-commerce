@@ -5,7 +5,7 @@ use App\Models\User;
 
 class connectionController extends Controller{
 
-    public function index()
+    public function login()
     {
         return $this->view("auth.index");
     }

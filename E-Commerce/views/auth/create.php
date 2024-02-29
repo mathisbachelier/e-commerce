@@ -15,6 +15,10 @@ action="/E-Commerce-BTS-SIO/E-Commerce/signUp" method="POST">
         <input class="form-control" type="text" id="password" name="password">
     </div>
     <div class="form-group mt-2">
+        <label  for="email">E-mail</label>
+        <input class="form-control" type="text" id="email" name="email">
+    </div>
+    <div class="form-group mt-2">
         <label  for="date_of_birth">Date de naissance</label>
         <input class="form-control" type="date" id="date_of_birth" name="date_of_birth">
     </div>
