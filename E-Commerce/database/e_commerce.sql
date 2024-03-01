@@ -158,7 +158,7 @@ ALTER TABLE `address`
 --
 -- Index pour la table `category`
 --
-ALTER TABLE `category`
+ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -179,7 +179,7 @@ ALTER TABLE `discount_coupon`
 --
 -- Index pour la table `order`
 --
-ALTER TABLE `order`
+ALTER TABLE `orders`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `unique_user_address_combination` (`id_user`,`id_address`),
   ADD KEY `id_address` (`id_address`);
@@ -187,7 +187,7 @@ ALTER TABLE `order`
 --
 -- Index pour la table `order_product`
 --
-ALTER TABLE `order_product`
+ALTER TABLE `order_products`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `unique_order_product_combination` (`id_order`,`id_product`),
   ADD KEY `fk_order_product_product` (`id_product`);
@@ -195,21 +195,21 @@ ALTER TABLE `order_product`
 --
 -- Index pour la table `product`
 --
-ALTER TABLE `product`
+ALTER TABLE `products`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `unique_category_combination` (`id_category`);
 
 --
 -- Index pour la table `promotion`
 --
-ALTER TABLE `promotion`
+ALTER TABLE `promotions`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `unique_product_combination` (`id_product`);
 
 --
 -- Index pour la table `user`
 --
-ALTER TABLE `user`
+ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -225,7 +225,7 @@ ALTER TABLE `address`
 --
 -- AUTO_INCREMENT pour la table `category`
 --
-ALTER TABLE `category`
+ALTER TABLE `categories`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -243,31 +243,31 @@ ALTER TABLE `discount_coupon`
 --
 -- AUTO_INCREMENT pour la table `order`
 --
-ALTER TABLE `order`
+ALTER TABLE `orders`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `order_product`
 --
-ALTER TABLE `order_product`
+ALTER TABLE `order_products`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `product`
 --
-ALTER TABLE `product`
+ALTER TABLE `products`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `promotion`
 --
-ALTER TABLE `promotion`
+ALTER TABLE `promotions`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `user`
 --
-ALTER TABLE `user`
+ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -290,27 +290,27 @@ ALTER TABLE `discount_coupon`
 --
 -- Contraintes pour la table `order`
 --
-ALTER TABLE `order`
+ALTER TABLE `orders`
   ADD CONSTRAINT `order_ibfk_1` FOREIGN KEY (`id_address`) REFERENCES `address` (`id`),
   ADD CONSTRAINT `order_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`);
 
 --
 -- Contraintes pour la table `order_product`
 --
-ALTER TABLE `order_product`
+ALTER TABLE `order_products`
   ADD CONSTRAINT `order_product_ibfk_1` FOREIGN KEY (`id_order`) REFERENCES `order` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `order_product_ibfk_2` FOREIGN KEY (`id_product`) REFERENCES `product` (`id`);
 
 --
 -- Contraintes pour la table `product`
 --
-ALTER TABLE `product`
+ALTER TABLE `products`
   ADD CONSTRAINT `product_ibfk_1` FOREIGN KEY (`id_category`) REFERENCES `category` (`id`) ON DELETE SET NULL;
 
 --
 -- Contraintes pour la table `promotion`
 --
-ALTER TABLE `promotion`
+ALTER TABLE `promotions`
   ADD CONSTRAINT `promotion_ibfk_1` FOREIGN KEY (`id_product`) REFERENCES `product` (`id`) ON DELETE CASCADE;
 COMMIT;
 
