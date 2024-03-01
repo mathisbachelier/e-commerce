@@ -1,24 +1,38 @@
 <h1>liste des commandes </h1>
 <h2>voir les commandes archivé : <a href="/e-commerce-BTS-SIO/E-Commerce/orderManagement/archived" class="btn btn-outline-primary">ici</a> </h2>
 <hr>
-<form style="display:inline" href= "/e-commerce-BTS-SIO/E-Commerce/orderManagement/search" method="POST">
-    <input type="text"  placeholder="chercher par nom ou numero de commande" class="form-control">
-    <input type="submit" value="rechercher" class="btn btn-outline-success">
-</form>
-<br>
-<form>
-    <label for="archived"> afficher les commandes archivées</label>
-    <input type="checkbox" name="archived" id="archived"  >
+<form action="/e-commerce-BTS-SIO/E-Commerce/orderManagement/search" method="POST">
+    <div class="row">
+        <div class="col-6">
+            <label for="name">Nom</label>
+            <input type="text" name="name" placeholder="chercher par nom ou numero de commande" class="form-control">
+        </div>
+        <div class="col-6">
+            <label for="status">Status</label>
+            <select name="status" class="form-control">
+                <option value="5"></option>
+                <option value="5">Tous</option>    
+                <option value= 4 >archive</option>
+                <option value= 3 >refuser</option>
+                <option value= 2 >validé</option>
+                <option value= 1 >accpeter</option>
+                <option value= 0 >en attente</option>
+            </select>
+        </div>
+    </div>
+    
+    <!-- <input type="checkbox" name="archived" id="archived" <?= $params['orders'][0]->status == 4 ? 'checked' : '' ?>>
     <label for="refused"> afficher les commandes refusées</label>
-    <input type="checkbox" name="refused" id="refused" value="1">
+    <input type="checkbox" name="refused" id="refused" <?= $params['orders'][0]->status == 3 ? 'checked' : '' ?>> -->
     <input type="submit" value="appliquer" class="btn btn-outline-secondary">
 </form>
 <?php if(empty($params['orders'])): ?>
+    
     <p>Aucune commande à afficher</p>
 <?php else: ?>
     <?php foreach($params['orders'] as $order) : ?>
-        <?php if($order->status != 4 && $order->status != 3): ?>
-        <div>
+        
+        <div class="card commande">
             <h2> Commande <?= $order->order_number ; ?> </h2>
             <p>price : <?= $order->price ?></p>
             <p>order id : <?= $order->order_id ?></p>
@@ -63,7 +77,7 @@
             <?php endif; ?>
             <hr>
         </div>
-        <?php endif; ?>
+        
     <?php endforeach; ?>
 <?php endif; ?>
 
