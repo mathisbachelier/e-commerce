@@ -1,5 +1,5 @@
 <h1>liste des commandes </h1>
-<h2>voir les commandes archivé : <a href="/e-commerce-BTS-SIO/E-Commerce/orderManagement/archived" class="btn btn-outline-primary">ici</a> </h2>
+
 <hr>
 <form action="/e-commerce-BTS-SIO/E-Commerce/orderManagement/search" method="POST">
     <div class="row">

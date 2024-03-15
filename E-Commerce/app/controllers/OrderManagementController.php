@@ -24,7 +24,7 @@ class OrderManagementController extends Controller{
         {
         $orders = new Order($this->getDB());
         $order =$orders->getOrderById($id);
-        $product = $orders->getProduct($id);
+        $product = $orders->getProductByOrder($id);
         
             return $this->view("orderManagement.order",compact('order','product'));
         }
