@@ -17,9 +17,9 @@ class Order extends Model{
         return $this->query("SELECT * FROM orders INNER JOIN users ON orders.id_user = users.id where orders.id =?",[$id],true);
     }
 
-    public function getProduct(int $id){
+    public function getProductByOrder(int $id){
         //return $this->query("SELECT orders.*,order_product.*, product.* FROM orders INNER JOIN order_product ON orders.id = order_product.id_order INNER JOIN product ON order_product.id_product = product.id where orders.id = ?", [$id]);
-        return $this->query("SELECT *  FROM order_product INNER JOIN product ON order_product.id_product = product.id INNER JOIN orders ON order_product.id_order = orders.id where orders.id = ?", [$id]);
+        return $this->query("SELECT *  FROM order_products INNER JOIN products ON order_products.id_product = products.id INNER JOIN orders ON order_products.id_order = orders.id where orders.id = ?", [$id]);
         }
     
     public function acceptOrder(int $id){
