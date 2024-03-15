@@ -37,6 +37,13 @@ $router->post('/categoryManagement/search/','App\controllers\CategoryManagementC
 $router->post('/categoryManagement/edit/:id', 'App\controllers\CategoryManagementController@update');
 $router->get('/categoryManagement/create', 'App\controllers\CategoryManagementController@create');
 $router->post('/categoryManagement/create', 'App\controllers\CategoryManagementController@createCategory');
+
+$router->get('/cart','App\controllers\CartController@index');
+$router->post('/cart/editQuantity/:id', 'App\controllers\CartController@update');
+$router->post('/cart/increaseQuantity/:id', 'App\controllers\CartController@increase');
+$router->post('/cart/decreaseQuantity/:id', 'App\controllers\CartController@decrease');
+$router->post('/cart/delete/:id', 'App\controllers\CartController@destroy');
+
 try{
      $router->run(); 
 } catch(\Exception $e) {

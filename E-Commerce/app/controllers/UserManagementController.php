@@ -22,7 +22,7 @@ public function destroy($id)
 public function update($id)
 {
     $model = new User($this->getDB());
-    $deleted = $model->changeRole($id,$_POST['role']);
+    $updated = $model->changeRole($id,$_POST['role']);
 
     return header('location: /E-Commerce-BTS-SIO/E-Commerce/user_management');
 }
