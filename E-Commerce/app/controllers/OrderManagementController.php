@@ -55,11 +55,12 @@ class OrderManagementController extends Controller{
 
         return $this->view('orderManagement.orderArchived',compact('_archived'));
     }
-    public function search(string $search){
+    public function search(){
         $model = new Order($this->getDB());
         
-        $orders = $model->search($search);
-        return $this->view('orderManagement.index', compact('orders'));
+
+            $orders = $model->searchOrder($_POST['name'],$_POST['status']);
+            return $this->view('orderManagement.index', compact('orders'));
     }
     }
 
