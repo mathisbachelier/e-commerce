@@ -4,7 +4,7 @@ namespace App\Models;
 use database\DBconnection;
 class User extends Model
 {
-    protected $table ="user";
+    protected $table ="users";
 
     public function getById(int $id)
     {
@@ -22,10 +22,15 @@ class User extends Model
         $stmt->execute([$role, $id]);
     }
 
-    public function searchUser($search)
+    public function searchUserByEmail($search)
     {
         $search = "%{$search}%";
         return $this->query("SELECT * FROM {$this->table} WHERE email like ?",[$search]);
+    }
+
+    public function getRole($id)
+    {
+        return $this->query("SELECT * FROM {$this->table} WHERE id = ?",[$id]);
     }
 }
 

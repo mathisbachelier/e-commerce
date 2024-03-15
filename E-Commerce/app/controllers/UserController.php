@@ -28,10 +28,10 @@ class UserController extends Controller{
            if($user->role == true)
            {
                 $_SESSION['auth'] = $user->role;
-                return header('location: /E-Commerce-BTS-SIO/E-Commerce/productManagement');
+                return $this->view("homepage.index");
            }
         } else {
-            return header('location: /E-Commerce-BTS-SIO/E-Commerce/login');
+            return $this->view("auth.index");
         }
     }
 }

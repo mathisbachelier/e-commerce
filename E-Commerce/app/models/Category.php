@@ -6,7 +6,7 @@ use database\DBconnection;
 class Category extends Model
 {
 
-    protected $table ="category";
+    protected $table ="categorys";
     public function all():array
     {
         return $this->query("SELECT * FROM {$this->table}");
@@ -28,5 +28,5 @@ class Category extends Model
         $stmt =  $this->db->getPDO()->prepare("UPDATE {$this->table} SET role = ? WHERE id = ?");
         $stmt->execute([$role, $id]);
 
-}
+    }
 }
