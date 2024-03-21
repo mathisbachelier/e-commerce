@@ -48,6 +48,9 @@ $router->post('/categoryManagement/search/','App\controllers\CategoryManagementC
 $router->post('/categoryManagement/edit/:id', 'App\controllers\CategoryManagementController@update');
 $router->get('/categoryManagement/create', 'App\controllers\CategoryManagementController@create');
 $router->post('/categoryManagement/create', 'App\controllers\CategoryManagementController@createCategory');
+
+$router->get('/product/:id', 'App\controllers\productController@show');
+
 try{
      $router->run(); 
 } catch(\Exception $e) {

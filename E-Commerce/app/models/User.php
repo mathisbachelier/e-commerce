@@ -4,7 +4,7 @@ namespace App\Models;
 use database\DBconnection;
 class User extends Model
 {
-    protected $table ="user";
+    protected $table ="users";
 
     public function getById(int $id)
     {

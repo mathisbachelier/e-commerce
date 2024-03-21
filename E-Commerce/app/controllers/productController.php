@@ -9,12 +9,16 @@ class ProductController extends Controller{
         $product = new Product($this->getDB());
         $product = $product->findById($id);
         
-        return $this->view("product.show", compact('product'));
+        return $this->view("homepage.show", compact('product'));
     }
 
 
 }
 
-
+class ProductController {
+    public function show($params) {
+        include_once(VIEWS . 'homepage/show.php');
+    }
+}
 
 ?>
