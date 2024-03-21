@@ -14,14 +14,11 @@ $router = new Router($url);
 
 // Exemple de route simple POST ou GET : 
 // $router->get/post('url','chemain du controller + @ methode');
-<<<<<<< HEAD
 $router -> get('/login', 'App\controllers\connectionController@login'); 
 $router -> post('/login', 'App\controllers\UserController@loginUser'); 
 $router -> get('/signUp', 'App\controllers\connectionController@create'); 
 $router -> post('/signUp', 'App\controllers\UserController@createUser'); 
-=======
 $router->get('/homepage/index', 'App\controllers\HomepageController@index');
->>>>>>> origin/mathis-orderManagement
 
 $router->get('/orderManagement/orders', 'App\controllers\OrderManagementController@index');
 $router->get('/orderManagement/orders/:id','App\controllers\OrderManagementController@show');
