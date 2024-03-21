@@ -10,7 +10,7 @@ define('DB_HOST',"127.0.0.1");
 define('DB_USER',"root");
 define('DB_PASSWORD',"");
 
-$router = new Router($url);
+$router = new Router($url); 
 
 // Exemple de route simple POST ou GET : 
 // $router->get/post('url','chemain du controller + @ methode');
