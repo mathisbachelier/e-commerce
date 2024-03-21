@@ -13,4 +13,11 @@ class HomepageController extends Controller
         
         return $this->view('homepage.index', compact('homepage'));
     }
+    public function search(){
+        $model = new Product($this->getDB());
+        
+        $homepage = $model->getProductsBySearch($_POST['search']);
+        
+        return $this->view('homepage.index', compact('homepage'));
+    }
 }

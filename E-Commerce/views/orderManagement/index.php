@@ -21,9 +21,7 @@
         </div>
     </div>
     
-    <!-- <input type="checkbox" name="archived" id="archived" <?= $params['orders'][0]->status == 4 ? 'checked' : '' ?>>
-    <label for="refused"> afficher les commandes refusées</label>
-    <input type="checkbox" name="refused" id="refused" <?= $params['orders'][0]->status == 3 ? 'checked' : '' ?>> -->
+    
     <input type="submit" value="appliquer" class="btn btn-outline-secondary">
 </form>
 <?php if(empty($params['orders'])): ?>

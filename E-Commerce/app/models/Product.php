@@ -11,6 +11,9 @@ class Product extends Model
 
 
     }
+    public function getProductsBySearch(string $search){
+        return $this->query("SELECT products.*, category.name FROM products JOIN category ON products.id_category = category.id WHERE products.name LIKE ? OR category.name LIKE ?",["%$search%","%$search%"]);
+    }
     
 }
 
