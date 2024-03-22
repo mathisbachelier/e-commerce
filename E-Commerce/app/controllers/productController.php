@@ -1,6 +1,6 @@
 <?php
 namespace App\Controllers;
-
+use App\models\Model;
 use App\Models\Product;
 
 class ProductController extends Controller{
@@ -13,12 +13,6 @@ class ProductController extends Controller{
     }
 
 
-}
-
-class ProductController {
-    public function show($params) {
-        include_once(VIEWS . 'homepage/show.php');
-    }
 }
 
 ?>

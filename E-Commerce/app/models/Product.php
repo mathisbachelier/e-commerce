@@ -4,7 +4,7 @@ use database\DBconnection;
 
 class Product extends Model
 {
-    protected $table ="product";
+    protected $table ="products";
     
     public function findByNameAndCategory($name, $category)
     {
