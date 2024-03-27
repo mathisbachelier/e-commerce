@@ -55,6 +55,11 @@ $router->post('/categoryManagement/create', 'App\controllers\CategoryManagementC
 
 $router->get('/order/:id','App\controllers\CategoryManagementController@index');
 $router->get('/product/:id', 'App\controllers\productController@show');
+$router->get('/cart','App\controllers\CartController@index');
+$router->post('/cart/editQuantity/:id', 'App\controllers\CartController@update');
+$router->post('/cart/increaseQuantity/:id', 'App\controllers\CartController@increase');
+$router->post('/cart/decreaseQuantity/:id', 'App\controllers\CartController@decrease');
+$router->post('/cart/delete/:id', 'App\controllers\CartController@destroy');
 
 try{
      $router->run(); 
