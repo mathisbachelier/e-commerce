@@ -54,6 +54,7 @@ $router->get('/categoryManagement/create', 'App\controllers\CategoryManagementCo
 $router->post('/categoryManagement/create', 'App\controllers\CategoryManagementController@createCategory');
 
 $router->get('/order/:id','App\controllers\CategoryManagementController@index');
+$router->get('/product/:id', 'App\controllers\productController@show');
 
 try{
      $router->run(); 
