@@ -6,7 +6,7 @@ use database\DBconnection;
 class Category extends Model
 {
 
-    protected $table ="categorys";
+    protected $table ="categories";
     public function all():array
     {
         return $this->query("SELECT * FROM {$this->table}");
