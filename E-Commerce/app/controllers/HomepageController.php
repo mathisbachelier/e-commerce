@@ -2,6 +2,7 @@
 namespace App\Controllers;
 
 use App\Models\Product;
+use App\Models\Category;
 
 
 class HomepageController extends Controller
@@ -9,15 +10,31 @@ class HomepageController extends Controller
     public function index()
     {
         $model = new Product($this->getDB());
+        $category = new Category($this->getDB());
         $homepage = $model->getProductsByLastAdd();
+        $categories = $category->all();
+        $randomBooks = $model->getRandomProductsByCategory(3);
+        $randomElectronic = $model->getRandomProductsByCategory(1);
+        $randomClothing = $model->getRandomProductsByCategory(2);
         
-        return $this->view('homepage.index', compact('homepage'));
+        return $this->view('homepage.index', compact('homepage','categories','randomBooks','randomElectronic','randomClothing'));
     }
     public function search()
     {
         $model = new Product($this->getDB());
-        $search = $model->searchProductByNameAndCategory($_POST['name'], $_POST['categories']);
+        $search = $_POST['name'] ?? '';
+        $category = $_POST['categories'] ?? '';
+        $homepage = $model->searchProductByNameAndCategory($search, $category);
+        $categoryModel = new Category($this->getDB());
+        $categories = $categoryModel->all();
         
-        return $this->view('homepage.index', compact('search'));
+        
+        if($search == "" && $category == "") {
+            header('Location: /e-commerce-BTS-SIO/E-Commerce/homepage/index');
+        }else{
+        
+        return $this->view('homepage.search', compact('homepage','categories'));
     }
+
+}
 }

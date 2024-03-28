@@ -1,6 +1,6 @@
 <?php
 namespace App\Controllers;
-use App\models\Model;
+
 use App\Models\Product;
 
 class ProductController extends Controller{
@@ -9,10 +9,12 @@ class ProductController extends Controller{
         $product = new Product($this->getDB());
         $product = $product->findById($id);
         
-        return $this->view("homepage.show", compact('product'));
+        return $this->view("product.show", compact('product'));
     }
 
 
 }
+
+
 
 ?>
