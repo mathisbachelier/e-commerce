@@ -4,11 +4,12 @@ use Router\Router;
 
 $url = $_GET['url'];
 define('VIEWS',dirname(__DIR__) . DIRECTORY_SEPARATOR . 'views'.DIRECTORY_SEPARATOR);
-define('SCRIPTS',dirname($_SERVER['SCRIPT_NAME']) . DIRECTORY_SEPARATOR );
+define('Style',dirname($_SERVER['SCRIPT_NAME']) . DIRECTORY_SEPARATOR . 'template_ALMEO'. DIRECTORY_SEPARATOR .'furni-1.0.0'. DIRECTORY_SEPARATOR .'css');
 define('DB_NAME',"e_commerce");
 define('DB_HOST',"127.0.0.1");
 define('DB_USER',"root");
 define('DB_PASSWORD',"");
+define('js_template', dirname($_SERVER['SCRIPT_NAME']) . DIRECTORY_SEPARATOR . 'template_ALMEO'. DIRECTORY_SEPARATOR .'furni-1.0.0'. DIRECTORY_SEPARATOR .'js');
 
 $router = new Router($url); 
 
