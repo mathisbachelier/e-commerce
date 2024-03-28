@@ -1,12 +1,11 @@
 <?php
-namespace App\Http\Controllers;
+namespace App\Controllers;
 
-use App\Models\GeneralConditionOfSale;
+use App\Controllers;
 
-class GeneralConditionOfSaleController extends Controller
-{
+class ConditionGeneralOfSaleController extends Controller{
     public function index()
     {
-        return view('GeneralConditionOfSale.index');
+        return $this->view('ConditionGeneralOfSale.index');
     }
 }

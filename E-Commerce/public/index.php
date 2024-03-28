@@ -61,7 +61,7 @@ $router->post('/cart/increaseQuantity/:id', 'App\controllers\CartController@incr
 $router->post('/cart/decreaseQuantity/:id', 'App\controllers\CartController@decrease');
 $router->post('/cart/delete/:id', 'App\controllers\CartController@destroy');
 
-$router->post('/ConditionGeneralOfSale/index', 'App\controllers\ConditionGeneralOfSaleController@index');
+$router->get('/ConditionGeneralOfSale/index', 'App\controllers\ConditionGeneralOfSaleController@index');
 
 try{
      $router->run(); 
