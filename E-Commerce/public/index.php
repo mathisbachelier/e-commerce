@@ -10,7 +10,7 @@ define('DB_HOST',"127.0.0.1");
 define('DB_USER',"root");
 define('DB_PASSWORD',"");
 
-$router = new Router($url);
+$router = new Router($url); 
 
 // Exemple de route simple POST ou GET : 
 // $router->get/post('url','chemain du controller + @ methode');
@@ -51,6 +51,15 @@ $router->post('/categoryManagement/search/','App\controllers\CategoryManagementC
 $router->post('/categoryManagement/edit/:id', 'App\controllers\CategoryManagementController@update');
 $router->get('/categoryManagement/create', 'App\controllers\CategoryManagementController@create');
 $router->post('/categoryManagement/create', 'App\controllers\CategoryManagementController@createCategory');
+
+$router->get('/order/:id','App\controllers\CategoryManagementController@index');
+$router->get('/product/:id', 'App\controllers\productController@show');
+$router->get('/cart','App\controllers\CartController@index');
+$router->post('/cart/editQuantity/:id', 'App\controllers\CartController@update');
+$router->post('/cart/increaseQuantity/:id', 'App\controllers\CartController@increase');
+$router->post('/cart/decreaseQuantity/:id', 'App\controllers\CartController@decrease');
+$router->post('/cart/delete/:id', 'App\controllers\CartController@destroy');
+
 try{
      $router->run(); 
 } catch(\Exception $e) {

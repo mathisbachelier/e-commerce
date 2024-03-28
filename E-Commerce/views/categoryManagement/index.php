@@ -15,7 +15,7 @@ foreach($params['categories'] as $category): ?>
           <input type="text" name="name" value="<?= $category->name; ?>">
           <input type="submit" class="btn btn-outline-success" id="name" value="Modifier">
           <form style="display:inline"  action="/E-Commerce-BTS-SIO/E-Commerce/categoryManagement/delete/<?= $category->id; ?>" method="POST">
-            <input type="submit" class="btn btn-outline-danger" value="supprimer"> 
+            <input type="submit" class="btn btn-danger" value="supprimer"> 
           </form>
         </form>
       </div>
