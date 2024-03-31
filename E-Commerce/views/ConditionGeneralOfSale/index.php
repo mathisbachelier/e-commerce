@@ -15,7 +15,7 @@
         </div>
     </div>
     <div class="mb-3 row">
-        <label for="conditions" class="col-sm-2 col-form-label">Cond    itions</label>
+        <label for="conditions" class="col-sm-2 col-form-label">Conditions</label>
         <div class="col-sm-10">
             <textarea id="conditions" class="form-control" placeholder="Écrire ici..."></textarea>
         </div>
@@ -30,8 +30,6 @@
         window.onload = function () {
                 if(localStorage.getItem("conditions")) {
 
-                    console.log('Conditions : ' + localStorage.getItem("conditions"));
-                    
                     document.getElementById('cgv').style.display = "none";
                     
                     var localStorageJSON = JSON.parse(localStorage.getItem("conditions"));
@@ -39,13 +37,13 @@
 
                     var ul = document.createElement("ul");
 
-                    for (let i = 0; i < localStorageJSON.length; i++) {
+                    for (let element of Object.entries(localStorageJSON)) {
                         var li = document.createElement("li");
-                        li.textContent = localStorageJSON[i];
+                        li.textContent = element[0] + " : " + element[1];
                         ul.appendChild(li);
                     }
 
-                myCgv.appendChild(ul);
+                    myCgv.appendChild(ul);
                 }
             };
       </script>
@@ -61,12 +59,20 @@
 
     submitButton.addEventListener('click', function() {
 
+        if(date.value == "" || redactor.value == "" || conditions.value == "") {
+            alert("Veuillez remplir tous les champs");
+            return false;
+        }
+
         const myCGV = {
             date : date.value,
             redactor : redactor.value,
             conditions : conditions.value,
         }
+
         localStorage.setItem("conditions", JSON.stringify(myCGV));
+
+        location.reload();
     });
 
 </script>
