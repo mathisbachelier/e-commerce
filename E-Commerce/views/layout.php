@@ -4,10 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ALMEO</title>
-    <link href="<?= Style?>/style.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link href="<?= Style?>/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link href="<?= Style?>/tiny-slider.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="<?= SCRIPTS. 'css'. DIRECTORY_SEPARATOR .'style.css'?>">
+    <link rel="stylesheet" href="<?= SCRIPTS. 'css'. DIRECTORY_SEPARATOR .'bootstrap.min.css'?>">
+    <link rel="stylesheet" href="<?= SCRIPTS. 'css'. DIRECTORY_SEPARATOR .'tiny-slider.css'?>">
 </head>
 <body>
 
@@ -23,7 +22,7 @@
         <a class="nav-link" href="/e-commerce-BTS-SIO/E-Commerce/homepage/index">Accueil </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Les derniers articles</a>
+        <a class="nav-link id" href="#" >Les derniers articless</a>
       </li>
       
     </ul>
@@ -44,9 +43,9 @@
     <div class="container">
         <?= $content ?>
     </div>
-
-    <script src="<?= Style?>/bootstrap.bundle.min.js"></script>
-    <script src="<?= Style?>/tiny-slider.js"></script>
-    <script src="<?= Style?>/custom.js"></script>
+    
 </body>
 </html>
+<script src="<?= SCRIPTS. 'js'. DIRECTORY_SEPARATOR .'bootstrap.bundle.min.js'?>"></script>
+<script src="<?= SCRIPTS. 'js'. DIRECTORY_SEPARATOR .'tiny-slider.js'?>"></script>
+<script src="<?= SCRIPTS. 'js'. DIRECTORY_SEPARATOR .'custom.js'?>"></script>
