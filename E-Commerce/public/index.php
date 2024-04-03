@@ -61,7 +61,9 @@ $router->post('/cart/increaseQuantity/:id', 'App\controllers\CartController@incr
 $router->post('/cart/decreaseQuantity/:id', 'App\controllers\CartController@decrease');
 $router->post('/cart/delete/:id', 'App\controllers\CartController@destroy');
 
-$router->get('/ConditionGeneralOfSale/index', 'App\controllers\ConditionGeneralOfSaleController@index');
+$router->get('/conditionGeneralOfSale/create', 'App\controllers\conditionGeneralOfSaleController@create');
+$router->post('/api/save-cgv', 'App\Controllers\ConditionGeneralOfSaleController@save');
+
 
 try{
      $router->run(); 
