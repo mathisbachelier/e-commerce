@@ -9,42 +9,34 @@
     <button id="submitButton" class="btn btn-primary">Sauvegarder</button>
 </div>
 
-<!-- Div pour afficher le résultat -->
 <div id="div_conditions"></div>
 
 <script>
-    const submitButton = document.getElementById('submitButton');
+        const submitButton = document.getElementById('submitButton');
 
-    submitButton.addEventListener('click', function() {
-        const conditionsText = document.getElementById('conditions').value;
+        submitButton.addEventListener('click', function() {
+            const conditionsText = document.getElementById('conditions').value;
 
-        if (conditionsText.trim() === '') {
-            alert('Veuillez remplir le champ "Conditions" pour poursuivre.');
-            return;
-        }
+            if (conditionsText.trim() === '') {
+                alert('Veuillez remplir le champ "Conditions" pour poursuivre.');
+                return;
+            }
 
-        const conditionsObject = { conditions: conditionsText };
-
-        // Envoi des données au serveur
-        fetch('/api/save-cgv', {
+            fetch('/E-commerce-BTS-SIO/E-Commerce/conditionGeneralOfSale/save', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(conditionsObject),
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log('Succès:', data);
-            alert('Les conditions de vente ont été enregistrées avec succès.');
-
-            // Affichage du texte des conditions dans la div spécifiée
-            const divAffichage = document.getElementById('div_conditions');
-            divAffichage.textContent = conditionsText;
-        })
-        .catch((error) => {
-            console.error('Erreur:', error);
-            alert('Une erreur est survenue lors de la sauvegarde.');
+            body: JSON.stringify({ conditions: conditionsText }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message);
+            })
+            .catch((error) => {
+                console.error('Erreur:', error);
+                alert('Une erreur est survenue lors de la sauvegarde.');
+            });
         });
-    });
 </script>
+
