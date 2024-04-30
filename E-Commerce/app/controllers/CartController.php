@@ -16,39 +16,4 @@ class CartController extends Controller{
 
         return $this->view('cart.index', compact('products'));
     }
-
-    public function update($id)
-    {
-
-    $model = new Cart($this->getDB());
-    $updated = $model->changeQuantity($id,$_POST['value']);
-
-    return header('location: /E-Commerce-BTS-SIO/E-Commerce/cart');
-    }
-
-
-    public function increase($id){
-        
-        $model = new Cart($this->getDB());
-        $increased = $model->increaseQuantity($id);
-
-        return header('location: /E-Commerce-BTS-SIO/E-Commerce/cart');
-    }
-
-    public function decrease($id){
-        
-        $model = new Cart($this->getDB());
-        $decreased = $model->decreaseQuantity($id);
-
-        return header('location: /E-Commerce-BTS-SIO/E-Commerce/cart');
-    }
-
-    public function destroy($id)
-    {
-        $model = new Cart($this->getDB());
-        $deleted = $model->destroy($id);
-
-        return header('location: /E-Commerce-BTS-SIO/E-Commerce/cart');
-    }
-
 }   
