@@ -6,11 +6,18 @@ use database\DBconnection;
 class Cart extends Model
 {
 
-    protected $table ="cart";
+    protected $table ="products";
 
-    public function getCart()
+    public function getCart($ids)
     {
-        return $this->query("SELECT cart.id AS id, name, price, quantity, short_content FROM {$this->table} INNER JOIN product ON cart.id_product = product.id");
+        $products = [];
+        if (empty($ids)) {
+            return $products;
+        }
+        foreach ($ids as $id) {            
+            $products[] = $this->query("SELECT * FROM {$this->table} WHERE id = ?", [$id]);
+        }
+        return $products;
     }
 
     public function changeQuantity(int $id, string $value)
