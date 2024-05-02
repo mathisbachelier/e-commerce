@@ -19,7 +19,7 @@ $router -> post('/login', 'App\controllers\UserController@loginUser');
 $router -> get('/signUp', 'App\controllers\connectionController@create'); 
 $router -> post('/signUp', 'App\controllers\UserController@createUser'); 
 
-$router->get('/homepage/index', 'App\controllers\HomepageController@index');
+$router->get('/homepage', 'App\controllers\HomepageController@index');
 $router->post('/homepage/search', 'App\controllers\HomepageController@search');
 
 $router->get('/orderManagement/orders', 'App\controllers\OrderManagementController@index');

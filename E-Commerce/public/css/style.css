@@ -709,3 +709,25 @@ textarea {
     height: 50px;
     border-radius: 50%;
     background: rgba(59, 93, 80, 0.2); }
+
+#center-cpt-product{
+  text-align: -webkit-center;
+}
+
+.form-control,
+.custom-select {
+  &.form-control-border {
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-radius: 0;
+    box-shadow: inherit;
+
+    &.border-width-2 {
+      border-bottom-width: 2px;
+    }
+    &.border-width-3 {
+      border-bottom-width: 3px;
+    }
+  }
+}
