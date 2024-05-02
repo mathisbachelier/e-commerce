@@ -30,7 +30,7 @@ class HomepageController extends Controller
         
         
         if($search == "" && $category == "") {
-            header('Location: /e-commerce-BTS-SIO/E-Commerce/homepage/index');
+            header('Location: /e-commerce-BTS-SIO/E-Commerce/homepage');
         }else{
         
         return $this->view('homepage.search', compact('homepage','categories'));

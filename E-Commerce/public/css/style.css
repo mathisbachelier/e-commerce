@@ -15,8 +15,8 @@ body {
   line-height: 28px;
   color: #6a6a6a;
   font-size: 14px;
-  background-color: #eff2f1; }
-
+  background-color: #eff2f1; 
+  background-color: #eff2f1;}
 a {
   text-decoration: none;
   -webkit-transition: .3s all ease;
@@ -709,3 +709,7 @@ textarea {
     height: 50px;
     border-radius: 50%;
     background: rgba(59, 93, 80, 0.2); }
+    ::-webkit-scrollbar-thumb {
+      background-color: #cccccc; /* Gray thumb */
+      border-radius: 10px; /* Rounded corners */
+    }
