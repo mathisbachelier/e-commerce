@@ -3,6 +3,7 @@ namespace App\Controllers;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\User;
+use App\Models\Address;
 
 
 class orderController extends Controller
@@ -18,6 +19,9 @@ class orderController extends Controller
         $user = new User($this->getDB());
         $user = $user->findById($id);
 
-        return $this->view('order.index', compact('orders', 'product', 'user'));
+        $address = new Address($this->getDB());
+        $address = $address->find_adress($id);
+
+        return $this->view('order.index', compact('orders', 'product', 'user', 'address'));
     }
 }
