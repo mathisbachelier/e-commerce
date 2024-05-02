@@ -5,7 +5,7 @@ function getQuantity(id) {
     for (let i = 0; i < cart.length; i++) {
         if (cart[i].id === id) {
             document.getElementById('quantity-amount-' + id).value = cart[i].quantity;
-			break;
+			return cart[i].quantity;
         }
     }
 }
@@ -20,10 +20,10 @@ function calculateTotal() {
         total += price * q;
     }
     document.getElementById('total-amount').innerHTML = "€ " +total;
+    return total;
 }
 
 </script>
-
 
 <div class="hero">
     <div class="container">
@@ -62,14 +62,14 @@ function calculateTotal() {
                                             foreach($products as $product):?>    
                                                 <tr>
                                                     <td class="product-thumbnail">
-                                                        <img src="<?= $product->image ?>" alt="Image" class="img-fluid">
+                                                        <img src="<?= $product->url_img ?>" alt="Image" class="img-fluid" height="100px" width="100px">
                                                     </td>
                                                     <td class="product-name">
                                                         <a class="h5 text-black" href="E-Commerce-BTS-SIO/E-Commerce/product/<?= $product->id ?>"><?= $product->name ?></a>
                                                     </td>
                                                     <td id="price-<?= $product->id ?>"><?= $product->price ?></td>
-                                                    <td style= display:ruby-text;>
-                                                        <div class="input-group mb-3 d-flex align-items-center quantity-container" style="max-width: 150px;">
+                                                    <td>
+                                                        <div class="input-group mb-3 d-flex align-items-center quantity-container" style="max-width: 250px; padding-left: 155px;">
                                                             <div class="input-group-prepend">
                                                                 <button class="btn btn-outline-black decrease"  id="quantity-button" type="button" onclick="updateQuantityButton(<?= $product->id ?>, 'decrease')">&minus;</button>
                                                             </div>
@@ -90,14 +90,21 @@ function calculateTotal() {
                         </tbody>
                     </table>                         
                     <strong>Total: </strong><span id="total-amount"></span>                       
-                    <script>calculateTotal();</script>
                 </div>
             </form>
         </div>
-        <button class="btn btn-success">Commander</button>
+        <form action="/E-Commerce-BTS-SIO/E-Commerce/order" method="POST">
+            <?php foreach($params['products'] as $products):
+                foreach($products as $product):?>    
+                    <input name="[id]" type="hidden" value="<?= $product->id ?>">
+                    <input id="productQuantity_<?= $product->id ?>" name="productQuantity_<?= $product->id ?>" type="hidden" value="">
+                    <script>
+                        document.getElementById('productQuantity_<?= $product->id ?>').value = getQuantity(<?= $product->id ?>);
+                    </script>                
+                <?php endforeach ?>
+            <?php endforeach; ?>
+            <button type="submit" class="btn btn-success">Commander</button>
+        </form>
     </div>
 </div>
-                                                
-
-
-    
+<script>calculateTotal();</script>

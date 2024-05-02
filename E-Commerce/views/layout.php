@@ -59,12 +59,12 @@
 
 <script>
 
-function addToCart(item) {
+function addToCart(id) {
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     let itemExists = false;
 
     for (let i = 0; i < cart.length; i++) {
-        if (cart[i].id === item.id) {
+        if (cart[i].id === id) {
             cart[i].quantity++;
             itemExists = true;
             break;
@@ -72,7 +72,7 @@ function addToCart(item) {
     }
 
     if (!itemExists) {
-        item.quantity = 1;
+        let item = {id: id, quantity: document.getElementById('quantity-product').value};
         cart.push(item);
     }
 
@@ -138,6 +138,11 @@ function sendCart() {
   let cart = JSON.parse(localStorage.getItem('cart')) || [];
   document.getElementById('cartData').value = JSON.stringify(cart);
   document.getElementById('cartForm').submit();
+}
+
+function showText(){
+    var text = document.getElementById("hiddenText");
+    text.style.display = "block";
 }
 
 </script>
