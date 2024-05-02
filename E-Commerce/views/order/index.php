@@ -13,7 +13,7 @@
 							</div>
 						</div>
 						<div class="col-lg-7">
-							
+							<img src="../public/img/view/order_img.jpg" alt="">
 						</div>
 					</div>
 				</div>
@@ -180,13 +180,15 @@
 
 		                  <div class="collapse" id="collapsepaypal">
 		                    <div class="py-2">
-		                      <p class="mb-0">Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won’t be shipped until the funds have cleared in our account.</p>
+		                      <p class="mb-0">
+								<div id="paypal-button-container"></div>
+							  </p>
 		                    </div>
 		                  </div>
 		                </div>
 
 		                <div class="form-group">
-		                  <button class="btn btn-black btn-lg py-3 btn-block" onclick="window.location='thankyou.html'">Place Order</button>
+		                  <button class="btn btn-primary btn-lg py-3 btn-block" onclick="window.location='thankyou.html'">Place Order</button>
 		                </div>
 
 		              </div>
@@ -199,5 +201,27 @@
 		    </div>
 		  </div>
 	</body>
-
+<script>
+	paypal.Buttons({
+		createOrder: function(data, actions) {
+			return actions.order.create({
+				purchase_units: [{
+					amount: {
+						value: '300.00'
+					}
+				}]
+			});
+		},
+		onApprove: function(data, actions) {
+			return actions.order.capture().then(function(details) {
+				window.location.href = '';
+			});
+		},
+		onError : function(err) {
+			console.log(err);
+			alert('Une erreur est survenue');
+		}
+		
+	}).render('#paypal-button-container');
+</script>
 </html>
