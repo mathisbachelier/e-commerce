@@ -1,3 +1,16 @@
+<div class="modal fade" id="modal_product" tabindex="-1" aria-labelledby="modal_product_label" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-4" id="modal_product_label">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="display_modal_product">
+      </div>
+      
+    </div>
+  </div>
+</div>
 <div class="col-12">
     <div class="hero">  
         <div class="container">
@@ -21,13 +34,16 @@
                         <input type="text" name="name" placeholder="Nom" id="name_search" class="form-control form-control-border">
                     </div>
                     <div class="col-3">
-                        <select name="category_id" id="category_search" class="form-control form-control-border">
+                        <select class="form-control form-control-border" name="id_category" id="id_category">
                             <option value=""></option>
+                            <?php foreach($params['category'] as $category): ?>
+                                <option value="<?= $category->id ?>"><?= $category->name ?></option>
+                            <?php endforeach; ?>
                         </select>
                     </div>
                     <div class="col-3">
                         <button type="submit" class="btn btn-dark"><i class="bi bi-search"></i></button>
-                        <button type="button" class="btn btn-dark" onclick="window.location.href='/E-Commerce-BTS-SIO/E-Commerce/productManagement/create'"><i class="bi bi-plus-lg"></i></button>
+                        <button type="button" class="btn btn-dark" onclick="display_add_product()" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal_product"><i class="bi bi-plus-lg"></i></button>
                     </div> 
                 </div>
             </div>
@@ -38,6 +54,7 @@
                     <table class="table">
                         <thead>
                             <tr>
+                                <th class="product-thumbnail">Image</th>
                                 <th class="product-name">Nom</th>
                                 <th class="product-name">Prix</th>
                                 <th class="product-name">Stock</th>
@@ -48,6 +65,9 @@
                         <tbody>
                             <?php foreach($params['products'] as $product): ?>
                                 <tr>
+                                    <td class="product-thumbnail">
+                                        <img src="public/img/product/<?= $product->url_img ?>" style="max-width: 60%;" alt="Image" class="img-fluid">
+                                    </td>
                                     <td class="product-name"><h2 class="h5 text-black"><?= $product->name ?></h2></td>
                                     <td class="product-name"><?= $product->price ?>€</td>
                                     <td class="product-name" id="center-cpt-product">
@@ -62,10 +82,12 @@
                                         </div>
                                     </td>
                                     <td class="product-name">
-                                        <button class="btn btn-primary" onclick="window.location.href='/E-Commerce-BTS-SIO/E-Commerce/productManagement/edit/<?= $product->id ?>'"><i class="bi bi-search"></i></button>
+                                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal_product" onclick="display_edit_product(<?= $product->id ?>)"><i class="bi bi-search"></i></button>
                                     </td>
                                     <td class="product-name">
-                                     <a href="/E-Commerce-BTS-SIO/E-Commerce/productManagement/delete/<?= $product->id ?>" class="btn btn-black btn-sm">X</a>
+                                     <form method="POST" action="/E-Commerce-BTS-SIO/E-Commerce/productManagement/delete/<?= $product->id ?>">
+                                        <button type="submit" class="btn btn-black btn-sm">X</button>
+                                     </form>
                                     </td>
                                 </tr>
                             <?php endforeach ?>
@@ -76,3 +98,21 @@
         </div>
     </div>
 </div>
+<script>
+    function display_add_product() {
+        fetch('/E-Commerce-BTS-SIO/E-Commerce/productManagement/create')
+            .then(response => response.text())
+            .then((data) => {
+                document.getElementById('display_modal_product').innerHTML = data;
+                document.getElementById('modal_product_label').innerHTML = "Ajouter un produit";
+        });
+    }
+    function display_edit_product(id) {
+        fetch('/E-Commerce-BTS-SIO/E-Commerce/productManagement/edit/' + id)
+            .then(response => response.text())
+            .then((data) => {
+                document.getElementById('display_modal_product').innerHTML = data;
+                document.getElementById('modal_product_label').innerHTML = "Modifier le produit";
+        });
+    }
+</script>

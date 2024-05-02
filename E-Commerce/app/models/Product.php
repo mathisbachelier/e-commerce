@@ -16,7 +16,7 @@ class Product extends Model
     {
         $name = "%{$name}%";
         
-        return $this->query("SELECT * FROM {$this->table} WHERE name LIKE ? OR id_category = ?",[$name, $category]);
+        return $this->query("SELECT * FROM {$this->table} WHERE name LIKE ? AND id_category = ?",[$name, $category]);
     }
     public function searchProductByNameAndCategory($search, $category){
         if(empty($category) && empty($search)){

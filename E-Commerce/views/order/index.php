@@ -1,5 +1,13 @@
 	<body>
-
+	<style>
+		.img-oders {
+			width: 450px; 
+			position: absolute;
+			top: 89px;
+			left: 850px;
+			border-radius: 10px;
+			box-shadow: 0 8px 16px -2px rgba(0,0,0,0.2), 0 10px 24px -2px rgba(0,0,0,0.22);
+	</style>
 		
 		<!-- End Header/Navigation -->
 
@@ -13,7 +21,7 @@
 							</div>
 						</div>
 						<div class="col-lg-7">
-							<img src="../public/img/view/order_img.jpg" alt="">
+							<img src="../public/img/view/order_img.jpg" class="img-oders" alt="">
 						</div>
 					</div>
 				</div>
