@@ -59,6 +59,11 @@
 					</ul>
 
 					<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
+						<li><a class="nav-link" href="#"><img src="images/user.svg"></a></li>
+						<form id="cartForm" action="/e-commerce-BTS-SIO/E-Commerce/cart" method="GET">
+							<input type="hidden" id="cartData" name="cart">
+							<li><a class="nav-link" onclick="sendCart()"><img src="images/cart.svg"></a></li>
+						</form>
 						<li><a class="nav-link"  href="E-Commerce-BTS-SIO/E-Commerce/login" onclick="display_user()" data-bs-toggle="modal" data-bs-target="#modalDisplay"><img src="images/user.svg"></a></li>
 						<li><a class="nav-link"><img src="images/cart.svg"></a></li>
 					</ul>
@@ -186,7 +191,97 @@
     
 </body>
 </html>
-<?=print_r($_SESSION)?>
+
+<script>
+
+function addToCart(id) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    let itemExists = false;
+
+    for (let i = 0; i < cart.length; i++) {
+        if (cart[i].id === id) {
+            cart[i].quantity++;
+            itemExists = true;
+            break;
+        }
+    }
+
+    if (!itemExists) {
+        let item = {id: id, quantity: document.getElementById('quantity-product').value};
+        cart.push(item);
+    }
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+}
+
+
+  // Function to delete an item from the cart in localStorage
+  function removeFromCart(id) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    for (let i = 0; i < cart.length; i++) {
+        if (cart[i].id === id) {
+            cart.splice(i, 1);
+            break;
+        }
+    }
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+	sendCart();
+
+}
+
+
+  function updateQuantity(id, q) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    id = parseInt(id);
+    q = parseInt(q);
+    for (var i = 0; i < cart.length; i++) {
+        if (cart[i].id === id) {
+            cart[i].quantity = q;
+            break;
+        }
+    }
+    localStorage.setItem('cart', JSON.stringify(cart));
+	sendCart();
+}
+
+
+	function updateQuantityButton(id, type) {
+
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    for (var i = 0; i < cart.length; i++) {
+        if (cart[i].id === id) {
+			if (type === 'decrease') {
+				if (cart[i].quantity > 1) {
+					cart[i].quantity--;
+				}
+			} else if (type === 'increase') {
+				cart[i].quantity++;
+			}
+            break;
+        }
+    }
+
+    // Mettre à jour le localStorage avec les nouvelles données du panier
+    localStorage.setItem('cart', JSON.stringify(cart));
+	sendCart();
+
+}
+
+function sendCart() {
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  document.getElementById('cartData').value = JSON.stringify(cart);
+  document.getElementById('cartForm').submit();
+}
+
+function showText(){
+    var text = document.getElementById("hiddenText");
+    text.style.display = "block";
+}
+
+</script>
+
 <script src="<?= SCRIPTS. 'js'. DIRECTORY_SEPARATOR .'bootstrap.bundle.min.js'?>"></script>
 <script src="<?= SCRIPTS. 'js'. DIRECTORY_SEPARATOR .'tiny-slider.js'?>"></script>
 <script src="<?= SCRIPTS. 'js'. DIRECTORY_SEPARATOR .'custom.js'?>"></script>
