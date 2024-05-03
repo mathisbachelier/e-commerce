@@ -21,4 +21,11 @@ class connectionController extends Controller{
     //         session_destroy();
     //         return header('location: /mvc/');
     // }
+
+    public function logout()
+    {
+        session_destroy();
+        return header('location: /e-commerce-BTS-SIO/E-Commerce/homepage');
+    }
+
 }

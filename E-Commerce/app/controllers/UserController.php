@@ -28,7 +28,14 @@ class UserController extends Controller{
            if($user->role == true)
            {
                 $_SESSION['auth'] = $user->role;
+                $_SESSION['user_id'] = $user->id;
+                if($user->role == 1){
+                    $_SESSION['is_admin'] = true;
+
                 return $this->view("homepage.index");
+                }
+            return $this->view("homepage.index");
+
            }
         } else {
             return $this->view("auth.index");
