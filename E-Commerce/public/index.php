@@ -53,8 +53,10 @@ $router->post('/categoryManagement/edit/:id', 'App\controllers\CategoryManagemen
 $router->get('/categoryManagement/create', 'App\controllers\CategoryManagementController@create');
 $router->post('/categoryManagement/create', 'App\controllers\CategoryManagementController@createCategory');
 
-$router->get('/order/:id','App\controllers\CategoryManagementController@index');
+$router->get('/order/:id','App\controllers\orderController@index');
+
 $router->get('/product/:id', 'App\controllers\productController@show');
+
 $router->get('/cart','App\controllers\CartController@index');
 $router->post('/cart/editQuantity/:id', 'App\controllers\CartController@update');
 $router->post('/cart/increaseQuantity/:id', 'App\controllers\CartController@increase');

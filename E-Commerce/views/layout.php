@@ -7,9 +7,11 @@
     <link rel="stylesheet" href="<?= SCRIPTS. 'css'. DIRECTORY_SEPARATOR .'style.css'?>">
     <link rel="stylesheet" href="<?= SCRIPTS. 'css'. DIRECTORY_SEPARATOR .'bootstrap.min.css'?>">
     <link rel="stylesheet" href="<?= SCRIPTS. 'css'. DIRECTORY_SEPARATOR .'tiny-slider.css'?>">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="https://www.paypal.com/sdk/js?client-id=AT0DomiGr43YltVodg_ylTMHdnxi5aYG1wkEr-aErQwdqLtoxxBKEzkxEl75P9hTymeesSU3X78OYjcy"></script>
 </head>
-<body style="">
+<body>
 
 
 <nav class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark" arial-label="Furni navigation bar">
@@ -57,16 +59,25 @@
 					</ul>
 
 					<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-					<?php
-					if(isset($_SESSION['auth'])): ?>
-						<li><a class="nav-link" href="#"><img src="public/template_AMLEO/furni/images/user.svg"></a></li>
-					<?php endif; ?>
-						<li><a class="nav-link" href="/e-commerce-BTS-SIO/E-Commerce/cart"><img src="public/template_AMLEO/furni/images/cart.svg"></a></li>
+						<li><a class="nav-link"  href="E-Commerce-BTS-SIO/E-Commerce/login" onclick="display_user()" data-bs-toggle="modal" data-bs-target="#modalDisplay"><img src="images/user.svg"></a></li>
+						<li><a class="nav-link"><img src="images/cart.svg"></a></li>
 					</ul>
 				</div>
 			</div>
 				
 		</nav>
+		<div class="modal fade" id="modalDisplay" tabindex="-1" aria-labelledby="modal_label" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h1 class="modal-title fs-4" id="modal_label">Modal title</h1>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body" id="display_modal">
+					</div>
+				</div>
+			</div>
+		</div>
     
 
         <?= $content ?>
@@ -175,6 +186,29 @@
     
 </body>
 </html>
+<?=print_r($_SESSION)?>
 <script src="<?= SCRIPTS. 'js'. DIRECTORY_SEPARATOR .'bootstrap.bundle.min.js'?>"></script>
 <script src="<?= SCRIPTS. 'js'. DIRECTORY_SEPARATOR .'tiny-slider.js'?>"></script>
 <script src="<?= SCRIPTS. 'js'. DIRECTORY_SEPARATOR .'custom.js'?>"></script>
+<script>
+    function display_user() {
+		if('<?= isset($_SESSION['auth']) ? 1 : '' ?>' !='') {
+			
+		} else {
+			fetch('/E-Commerce-BTS-SIO/E-Commerce/login')
+				.then(response => response.text())
+				.then((data) => {
+					document.getElementById('display_modal').innerHTML = data;
+					document.getElementById('modal_label').innerHTML = "Se connecter";
+			});
+		}
+    }
+	function display_register() {
+		fetch('/E-Commerce-BTS-SIO/E-Commerce/signUp')
+			.then(response => response.text())
+			.then((data) => {
+				document.getElementById('display_modal').innerHTML = data;
+				document.getElementById('modal_label').innerHTML = "S'inscrire";
+		});
+	}
+</script>

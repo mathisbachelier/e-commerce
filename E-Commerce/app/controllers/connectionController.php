@@ -7,12 +7,12 @@ class connectionController extends Controller{
 
     public function login()
     {
-        return $this->view("auth.index");
+        return $this->display("auth.index");
     }
 
     public function create()
     {
-        return $this->view("auth.create");
+        return $this->display("auth.create");
     }
     
 

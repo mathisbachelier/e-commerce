@@ -25,6 +25,16 @@ abstract class Controller {
         require VIEWS ."layout.php";
     }
 
+    protected function display(string $path, array $params = null){
+        ob_start();
+        $path = str_replace('.', DIRECTORY_SEPARATOR, $path);
+        require VIEWS . $path . ".php";
+        
+
+        $content =  ob_get_clean();
+        echo $content;
+    }
+
     protected function getDB(){
         return $this->db;
     }
