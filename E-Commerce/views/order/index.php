@@ -231,5 +231,7 @@
 		}
 		
 	}).render('#paypal-button-container');
+	
 </script>
 </html>
+}
