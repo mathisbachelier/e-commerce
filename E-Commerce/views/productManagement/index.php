@@ -1,16 +1,3 @@
-<div class="modal fade" id="modal_product" tabindex="-1" aria-labelledby="modal_product_label" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-4" id="modal_product_label">Modal title</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body" id="display_modal_product">
-      </div>
-      
-    </div>
-  </div>
-</div>
 <div class="col-12">
     <div class="hero">  
         <div class="container">
@@ -43,7 +30,7 @@
                     </div>
                     <div class="col-3">
                         <button type="submit" class="btn btn-dark"><i class="bi bi-search"></i></button>
-                        <button type="button" class="btn btn-dark" onclick="display_add_product()" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal_product"><i class="bi bi-plus-lg"></i></button>
+                        <button type="button" class="btn btn-dark" onclick="display_add_product()" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalDisplay"><i class="bi bi-plus-lg"></i></button>
                     </div> 
                 </div>
             </div>
@@ -82,7 +69,7 @@
                                         </div>
                                     </td>
                                     <td class="product-name">
-                                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal_product" onclick="display_edit_product(<?= $product->id ?>)"><i class="bi bi-search"></i></button>
+                                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalDisplay" onclick="display_edit_product(<?= $product->id ?>)"><i class="bi bi-search"></i></button>
                                     </td>
                                     <td class="product-name">
                                      <form method="POST" action="/E-Commerce-BTS-SIO/E-Commerce/productManagement/delete/<?= $product->id ?>">
@@ -103,16 +90,16 @@
         fetch('/E-Commerce-BTS-SIO/E-Commerce/productManagement/create')
             .then(response => response.text())
             .then((data) => {
-                document.getElementById('display_modal_product').innerHTML = data;
-                document.getElementById('modal_product_label').innerHTML = "Ajouter un produit";
+                document.getElementById('display_modal').innerHTML = data;
+                document.getElementById('modal_label').innerHTML = "Ajouter un produit";
         });
     }
     function display_edit_product(id) {
         fetch('/E-Commerce-BTS-SIO/E-Commerce/productManagement/edit/' + id)
             .then(response => response.text())
             .then((data) => {
-                document.getElementById('display_modal_product').innerHTML = data;
-                document.getElementById('modal_product_label').innerHTML = "Modifier le produit";
+                document.getElementById('display_modal').innerHTML = data;
+                document.getElementById('modal_label').innerHTML = "Modifier le produit";
         });
     }
 </script>
