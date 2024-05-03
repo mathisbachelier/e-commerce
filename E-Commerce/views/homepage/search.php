@@ -50,7 +50,7 @@
 							<strong class="product-price"><?php echo $homepage->price." €"; ?></strong>
 
 							<span class="icon-cross">
-								<img src="images/cross.svg" class="img-fluid">
+								<img src="../public/template_AMLEO/furni/images/cross.svg" class="img-fluid">
 							</span>
 						
 						</a>

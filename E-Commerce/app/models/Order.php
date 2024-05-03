@@ -60,5 +60,9 @@ class Order extends Model{
         
     }
 
+    public function getUserOrders(int $id){
+        return $this->query("SELECT * FROM orders WHERE id_user = ?", [$id]);
+    }
+
 
 }
