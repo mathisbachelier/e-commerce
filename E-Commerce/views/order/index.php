@@ -7,8 +7,8 @@
 			left: 850px;
 			border-radius: 10px;
 			box-shadow: 0 8px 16px -2px rgba(0,0,0,0.2), 0 10px 24px -2px rgba(0,0,0,0.22);
+		}
 	</style>
-		
 		<!-- End Header/Navigation -->
 
 		<!-- Start Hero Section -->
@@ -86,64 +86,6 @@
 									<input type="text" class="form-control" id="phone" name="phone" placeholder="Numéro de telephone">
 								</div>
 							</div>
-							<div class="form-group">
-								<label for="c_ship_different_address" class="text-black" data-bs-toggle="collapse" href="#ship_different_address" role="button" aria-expanded="false" aria-controls="ship_different_address"><input type="checkbox" value="1" id="c_ship_different_address"> Expédier à une autre adresse ?</label>
-								<div class="collapse" id="ship_different_address">
-									<div class="py-2">
-										<div class="form-group row">
-											<div class="col-md-6">
-												<label for="first_name" class="text-black">Prenom <span class="text-danger">*</span></label>
-												<input type="text" class="form-control" id="first_name" name="first_name" value="<?= $params['user']->first_name ?>">
-											</div>
-											<div class="col-md-6">
-												<label for="last_name" class="text-black">Nom de famille <span class="text-danger">*</span></label>
-												<input type="text" class="form-control" id="last_name" name="last_name" value="<?= $params['user']->last_name ?>">
-											</div>
-										</div>
-
-										<div class="form-group row">
-											<div class="col-md-12">
-												<label for="name_companyname" class="text-black">Nom de l'entreprise </label>
-												<input type="text" class="form-control" id="name_companyname" name="name_companyname">
-											</div>
-										</div>
-
-										<div class="form-group row">
-											<div class="col-md-12">
-												<label for="address" class="text-black">Adresse <span class="text-danger">*</span></label>
-												<input type="text" class="form-control" id="address" name="address" placeholder="Adresse postale">
-											</div>
-										</div>
-
-										<div class="form-group mt-3">
-											<input type="text" class="form-control" placeholder="Appartement, suite, unité, etc.">
-										</div>
-
-										<div class="form-group row">
-											<div class="col-md-6">
-												<label for="name_city" class="text-black">Ville <span class="text-danger">*</span></label>
-												<input type="text" class="form-control" id="name_city" name="name_city">
-											</div>
-											<div class="col-md-6">
-												<label for="c_postal" class="text-black">Code Postal <span class="text-danger">*</span></label>
-												<input type="text" class="form-control" id="c_postal" name="c_postal">
-											</div>
-										</div>
-
-										<div class="form-group row mb-5">
-											<div class="col-md-6">
-													<label for="email" class="text-black">E-mail<span class="text-danger">*</span></label>
-													<input type="text" class="form-control" id="email" name="email" value="<?= $params['user']->email ?>">
-												</div>
-											<div class="col-md-6">
-												<label for="phone" class="text-black">Téléphone <span class="text-danger">*</span></label>
-												<input type="text" class="form-control" id="phone" name="phone" placeholder="Numéro de telephone">
-											</div>
-										</div>
-									</div>
-
-								</div>
-		            		</div>
 
 							<div class="form-group">
 								<label for="order_notes" class="text-black">Remarques sur la commande</label>
@@ -160,26 +102,22 @@
 		              <div class="p-3 p-lg-5 border bg-white">
 		                <table class="table site-block-order-table mb-5">
 		                  <thead>
-		                    <th>Product</th>
+		                    <th>Produits</th>
 		                    <th>Total</th>
 		                  </thead>
 		                  <tbody>
-		                    <tr>
-		                      <td>Top Up T-Shirt <strong class="mx-2">x</strong> 1</td>
-		                      <td>$250.00</td>
-		                    </tr>
-		                    <tr>
-		                      <td>Polo Shirt <strong class="mx-2">x</strong>   1</td>
-		                      <td>$100.00</td>
-		                    </tr>
-		                    <tr>
-		                      <td class="text-black font-weight-bold"><strong>Cart Subtotal</strong></td>
-		                      <td class="text-black">$350.00</td>
-		                    </tr>
-		                    <tr>
-		                      <td class="text-black font-weight-bold"><strong>Order Total</strong></td>
-		                      <td class="text-black font-weight-bold"><strong>$350.00</strong></td>
-		                    </tr>
+							<?php foreach ($params['products'] as $product) : ?>
+								<?php if(isset($product['name'])) : ?>
+									<tr>
+										<td><?= $product['name'] ?> <strong class="mx-2">x</strong> <?= $product['quantity'] ?></td>
+										<td><?= $product['price']*$product['quantity'] ?></td>
+									</tr>
+								<?php endif; ?>
+							<?php endforeach; ?>
+							<tr>
+								<td class="text-black font-weight-bold"><strong>Total</strong></td>
+								<td class="text-black font-weight-bold"><strong><?= $params['products']['total_price'] ?></strong></td>
+							</tr>
 		                  </tbody>
 		                </table>
 		                 
@@ -194,11 +132,6 @@
 		                    </div>
 		                  </div>
 		                </div>
-
-		                <div class="form-group">
-		                  <button class="btn btn-primary btn-lg py-3 btn-block" onclick="window.location='thankyou.html'">Place Order</button>
-		                </div>
-
 		              </div>
 		            </div>
 		          </div>
@@ -215,14 +148,14 @@
 			return actions.order.create({
 				purchase_units: [{
 					amount: {
-						value: '300.00'
+						value: '<?= $params['products']['total_price'] ?>'
 					}
 				}]
 			});
 		},
 		onApprove: function(data, actions) {
 			return actions.order.capture().then(function(details) {
-				window.location.href = '';
+				create_order();
 			});
 		},
 		onError : function(err) {
@@ -232,6 +165,43 @@
 		
 	}).render('#paypal-button-container');
 	
+	function create_order(){
+		let products = []; 
+
+		<?php foreach ($params['products'] as $product) : ?>
+			<?php if(isset($product['name'])) : ?>
+				products.push({
+					id: '<?= $product['id'] ?>',
+					name: '<?= $product['name'] ?>',
+					quantity: '<?= $product['quantity'] ?>',
+					price: '<?= $product['price'] ?>'
+				});
+			<?php endif; ?>
+		<?php endforeach; ?>
+		
+		let orderData = {
+			products: products,
+			id_user: '<?= $params['user']->id ?>',
+			id_address: document.getElementById('address').value,
+			price: '<?= $params['products']['total_price'] ?>' 
+		};
+
+		fetch('/E-Commerce-BTS-SIO/E-Commerce/order/create', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(orderData) // Utilisez orderData ici
+		}).then(function(response) {
+			return response.json();
+		}).then(function(data) {
+			console.log(data);
+			window.location.href = '';
+		})
+		.catch(function(err) {
+			console.log(err);
+		});
+				
+	}
 </script>
 </html>
-}

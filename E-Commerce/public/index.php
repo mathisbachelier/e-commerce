@@ -4,6 +4,7 @@ use Router\Router;
 
 $url = $_GET['url'];
 define('VIEWS',dirname(__DIR__) . DIRECTORY_SEPARATOR . 'views'.DIRECTORY_SEPARATOR);
+define('IMG',dirname(__DIR__) . DIRECTORY_SEPARATOR . 'public'.DIRECTORY_SEPARATOR . 'img'.DIRECTORY_SEPARATOR);
 define('SCRIPTS',dirname($_SERVER['SCRIPT_NAME']) . DIRECTORY_SEPARATOR );
 define('DB_NAME',"e_commerce");
 define('DB_HOST',"127.0.0.1");
@@ -53,7 +54,9 @@ $router->post('/categoryManagement/edit/:id', 'App\controllers\CategoryManagemen
 $router->get('/categoryManagement/create', 'App\controllers\CategoryManagementController@create');
 $router->post('/categoryManagement/create', 'App\controllers\CategoryManagementController@createCategory');
 
-$router->get('/order/:id','App\controllers\orderController@index');
+$router->post('/order','App\controllers\orderController@index');
+
+$router->post('/order/create','App\controllers\orderController@create');
 
 $router->get('/product/:id', 'App\controllers\productController@show');
 

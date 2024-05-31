@@ -95,4 +95,9 @@ abstract class Model {
     {
         return $this->query("DELETE FROM {$this->table} WHERE id = ?", [$id]);
     }
+
+    public function recupLastId()
+    {
+        return $this->db->getPDO()->lastInsertId();
+    }
 }

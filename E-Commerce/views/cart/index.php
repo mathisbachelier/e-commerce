@@ -96,7 +96,7 @@ function calculateTotal() {
         <form action="/E-Commerce-BTS-SIO/E-Commerce/order" method="POST">
             <?php foreach($params['products'] as $products):
                 foreach($products as $product):?>    
-                    <input name="[id]" type="hidden" value="<?= $product->id ?>">
+                    <input name="id[]" type="hidden" value="<?= $product->id ?>">
                     <input id="productQuantity_<?= $product->id ?>" name="productQuantity_<?= $product->id ?>" type="hidden" value="">
                     <script>
                         document.getElementById('productQuantity_<?= $product->id ?>').value = getQuantity(<?= $product->id ?>);
