@@ -207,6 +207,7 @@ a {
     padding-bottom: 50px;
     cursor: pointer; }
     .product-section .product-item .product-thumbnail {
+      border-radius: 20px;
       margin-bottom: 30px;
       position: relative;
       top: 0;
@@ -734,4 +735,27 @@ textarea {
       border-bottom-width: 3px;
     }
   }
+}
+
+#img-product{
+
+  border-radius: 20px;
+}
+
+#userOrderDiv {
+  border: solid 1px ;
+  border-radius: 20px;
+  padding : 50px;
+  margin-top: 50px;
+  text-decoration: none !important;
+}
+
+#userOrderDiv-a {
+  
+  text-decoration: none !important;
+}
+
+#userOrderDiv-a .a :hover {
+  color: #3b5d50 !important;
+  text-decoration: underline !important;
 }

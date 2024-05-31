@@ -2,7 +2,7 @@
   <div class="row justify-content-between align-items-center">
     <div class="col-lg-6">
       <div class="img-wrap">
-        <img src="<?= $params['product']->url_img ?>" width="500" height="500" alt="Image" class="img-fluid">
+        <img id="img-product"src="<?= IMG ?>/product/<?= $params['product']->url_img ?>" width="500" height="500" alt="Image" class="img-fluid">
       </div>
     </div>
     <div class="col-lg-6">
