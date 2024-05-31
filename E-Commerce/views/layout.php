@@ -36,7 +36,7 @@
 							</a>
 							<ul class="dropdown-menu" aria-labelledby="dropdownAdmins">
 								<li><a class="dropdown-item" href="/e-commerce-BTS-SIO/E-Commerce/orderManagement/orders" style="color:black !important">gestion des commandes</a></li>
-								<li><a class="dropdown-item" href="#" style="color:black !important">test2</a></li>
+								<li><a class="dropdown-item" href="/e-commerce-BTS-SIO/E-Commerce/productManagement" style="color:black !important">ajouter un produit</a></li>
 								<li><a class="dropdown-item" href="#" style="color:black !important">test3</a></li>
 							</ul>
 						</li>
@@ -44,12 +44,10 @@
 
             <?php
        if(!isset($_SESSION['auth'])): ?>
-      <li class="nav-item ">
-		<a class="nav-link" href="/e-commerce-BTS-SIO/E-Commerce/login">Se connecter </a>  
-      </li>
+      
       <?php else: ?>
 		<?php if(!isset($_SESSION['is_admin'])): ?>
-		<li class="nav-item "><a class="nav-link" href="/e-commerce-BTS-SIO/E-Commerce/userOrder">Commandes </a> </li>
+		<li class="nav-item "><a class="nav-link" href="/e-commerce-BTS-SIO/E-Commerce/userOrder">Vos commandes </a> </li>
 		<?php endif; ?>
       <li class="nav-item ">
         <a class="nav-link" href="/e-commerce-BTS-SIO/E-Commerce/deconnection">Déconnexion </a> 
@@ -59,13 +57,12 @@
 					</ul>
 
 					<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-						<li><a class="nav-link" href="#"><img src="images/user.svg"></a></li>
+						
+						<li><a class="nav-link"  href="E-Commerce-BTS-SIO/E-Commerce/login" onclick="display_user()" data-bs-toggle="modal" data-bs-target="#modalDisplay"><img src="<?= IMG ?>icons/user.svg"></a></li>
 						<form id="cartForm" action="/e-commerce-BTS-SIO/E-Commerce/cart" method="GET">
 							<input type="hidden" id="cartData" name="cart">
-							<li><a class="nav-link" onclick="sendCart()"><img src="images/cart.svg"></a></li>
+							<li><a class="nav-link" onclick="sendCart()"><img src="<?= IMG ?>icons/cart.svg"></a></li>
 						</form>
-						<li><a class="nav-link"  href="E-Commerce-BTS-SIO/E-Commerce/login" onclick="display_user()" data-bs-toggle="modal" data-bs-target="#modalDisplay"><img src="images/user.svg"></a></li>
-						<li><a class="nav-link"><img src="images/cart.svg"></a></li>
 					</ul>
 				</div>
 			</div>
@@ -92,33 +89,12 @@
 
 				
 
-				<div class="row">
-					<div class="col-lg-8">
-						<div class="subscription-form">
-							<h3 class="d-flex align-items-center"><span class="me-1"><img src="images/envelope-outline.svg" alt="Image" class="img-fluid"></span><span>Subscribe to Newsletter</span></h3>
-
-							<form action="#" class="row g-3">
-								<div class="col-auto">
-									<input type="text" class="form-control" placeholder="Enter your name">
-								</div>
-								<div class="col-auto">
-									<input type="email" class="form-control" placeholder="Enter your email">
-								</div>
-								<div class="col-auto">
-									<button class="btn btn-primary">
-										<span class="fa fa-paper-plane"></span>
-									</button>
-								</div>
-							</form>
-
-						</div>
-					</div>
-				</div>
+				
 
 				<div class="row g-5 mb-5">
 					<div class="col-lg-4">
-						<div class="mb-4 footer-logo-wrap"><a href="#" class="footer-logo">Furni<span>.</span></a></div>
-						<p class="mb-4">Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique. Pellentesque habitant</p>
+						<div class="mb-4 footer-logo-wrap"><a href="#" class="footer-logo">ALMEO<span>.</span></a></div>
+						<p class="mb-4"></p>
 
 						<ul class="list-unstyled custom-social">
 							<li><a href="#"><span class="fa fa-brands fa-facebook-f"></span></a></li>
@@ -156,13 +132,7 @@
 								</ul>
 							</div>
 
-							<div class="col-6 col-sm-6 col-md-3">
-								<ul class="list-unstyled">
-									<li><a href="#">Nordic Chair</a></li>
-									<li><a href="#">Kruzo Aero</a></li>
-									<li><a href="#">Ergonomic Chair</a></li>
-								</ul>
-							</div>
+							
 						</div>
 					</div>
 
@@ -171,7 +141,7 @@
 				<div class="border-top copyright">
 					<div class="row pt-4">
 						<div class="col-lg-6">
-							<p class="mb-2 text-center text-lg-start">Copyright &copy;<script>document.write(new Date().getFullYear());</script>. All Rights Reserved. &mdash; Designed with love by <a href="https://untree.co">Untree.co</a> Distributed By <a hreff="https://themewagon.com">ThemeWagon</a>  <!-- License information: https://untree.co/license/ -->
+							<p class="mb-2 text-center text-lg-start">Copyright &copy;<script>document.write(new Date().getFullYear());</script>. All Rights Reserved. &mdash; ALMEO</a>  <!-- License information: https://untree.co/license/ -->
             </p>
 						</div>
 

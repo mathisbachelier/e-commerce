@@ -40,8 +40,8 @@
 
 			<?php foreach ($params['homepage'] as $homepage) { ?>
 				<div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
-					<a class="product-item" href="#">
-						<img src="images/product-1.png" class="img-fluid product-thumbnail">
+					<a class="product-item" href="/e-commerce-BTS-SIO/E-Commerce/product/<?= $homepage->id; ?>">
+						<img src="<?= IMG ?>/product/<?= $homepage->url_img ?>" class="img-fluid product-thumbnail">
 						<h3 class="product-title"><?php echo $homepage->name; ?></h3>
 						<strong class="product-price"><?php echo $homepage->price; ?> $</strong>
 
@@ -62,8 +62,8 @@
 
 			<?php foreach ($params['randomBooks'] as $randombooks) { ?>
                 <div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
-        <a class="product-item" href="#">
-            <img src="images/product-1.png" class="img-fluid product-thumbnail">
+        <a class="product-item" href="/e-commerce-BTS-SIO/E-Commerce/product/<?= $randombooks->id; ?>">
+            <img src="<?= IMG ?>/product/<?= $randombooks->url_img ?>" class="img-fluid product-thumbnail">
             <h3 class="product-title"><?php echo $randombooks->name; ?></h3>
             <strong class="product-price"><?php echo $randombooks->price; ?> $</strong>
 
@@ -94,8 +94,8 @@
 
 			<?php foreach ($params['randomElectronic'] as $randomElectronic) { ?>
                 <div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
-        <a class="product-item" href="#">
-            <img src="images/product-1.png" class="img-fluid product-thumbnail">
+        <a class="product-item" href="/e-commerce-BTS-SIO/E-Commerce/product/<?= $randomElectronic->id; ?>">
+            <img src="<?= IMG ?>/product/<?= $randomElectronic->url_img ?>" class="img-fluid product-thumbnail">
             <h3 class="product-title"><?php echo $randomElectronic->name; ?></h3>
             <strong class="product-price"><?php echo $randomElectronic->price; ?> $</strong>
 
@@ -116,8 +116,8 @@
 
 			<?php foreach ($params['randomClothing'] as $randomClothing) { ?>
                 <div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
-        <a class="product-item" href="#">
-            <img src="images/product-1.png" class="img-fluid product-thumbnail">
+        <a class="product-item" href="/e-commerce-BTS-SIO/E-Commerce/product/<?= $randomClothing->id; ?>">
+            <img src="<?= IMG ?>/product/<?= $randomElectronic->url_img ?>" class="img-fluid product-thumbnail">
             <h3 class="product-title"><?php echo $randomClothing->name; ?></h3>
             <strong class="product-price"><?php echo $randomClothing->price; ?> $</strong>
 

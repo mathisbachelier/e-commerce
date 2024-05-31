@@ -37,9 +37,9 @@
 		      		<!-- Start Column 1 -->
 					<?php foreach ($params['homepage'] as $homepage) { ?>
 					<div class="col-12 col-md-4 col-lg-3 mb-5">
-						<a class="product-item" href="#">
+						<a class="product-item" href="/e-commerce-BTS-SIO/E-Commerce/product/<?= $homepage->id; ?>">
 						
-							<img src="images/product-3.png" class="img-fluid product-thumbnail">
+							<img src="<?= IMG ?>/product/<?= $homepage->url_img ?>" class="img-fluid product-thumbnail">
 							<h3 class="product-title" style = "font-size: 1.7rem;"><?php echo $homepage->name; ?></h3>
 							<h3><?php foreach ($params['categories'] as $category) { ?> 
 								<?php if($homepage->id_category == $category->id): ?>

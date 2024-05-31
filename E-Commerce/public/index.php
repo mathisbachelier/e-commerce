@@ -10,6 +10,7 @@ define('DB_NAME',"e_commerce");
 define('DB_HOST',"127.0.0.1");
 define('DB_USER',"root");
 define('DB_PASSWORD',"");
+define('IMG',dirname($_SERVER['SCRIPT_NAME']) .DIRECTORY_SEPARATOR . 'img'.DIRECTORY_SEPARATOR);
 
 $router = new Router($url); 
 
