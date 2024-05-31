@@ -14,9 +14,11 @@ class UserController extends Controller{
         if($count -> nb == 0)
         {
             $user->create($_POST);
+        } else {
+            echo "<script>alert('L'email existe déjà');</script>";
         }
 
-        return $this->view("auth.index");
+        return $this->view("homepage.index");
     }
 
     public function loginUser()
@@ -38,7 +40,42 @@ class UserController extends Controller{
 
            }
         } else {
-            return $this->view("auth.index");
+            header('location: /e-commerce-BTS-SIO/E-Commerce/homepage');
+            echo "<script>alert('Le mot de passe ou l'identifiant est incorrect');</script>";
         }
+    }
+
+    public function edit(int $id)
+    {
+        $user = new User($this->getDB());
+        $user =  $user->findById($id);
+
+        return $this->display("user.edit", compact('user'));
+    }
+
+    public function update(int $id)
+    {
+        $user = new User($this->getDB());
+        $user->update($id, $_POST);
+        
+        header('location: /e-commerce-BTS-SIO/E-Commerce/homepage');
+        
+    }
+
+    public function editMdp(int $id)
+    {
+        $user = new User($this->getDB());
+        $user =  $user->findById($id);
+
+        return $this->display("user.editMdp", compact('user'));
+    }
+
+    public function updateMdp(int $id)
+    {
+        $user = new User($this->getDB());
+        $user->updateMdp($id, $_POST);
+        
+        header('location: /e-commerce-BTS-SIO/E-Commerce/homepage');
+        
     }
 }

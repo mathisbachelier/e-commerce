@@ -4,7 +4,6 @@ use Router\Router;
 
 $url = $_GET['url'];
 define('VIEWS',dirname(__DIR__) . DIRECTORY_SEPARATOR . 'views'.DIRECTORY_SEPARATOR);
-define('IMG',dirname(__DIR__) . DIRECTORY_SEPARATOR . 'public'.DIRECTORY_SEPARATOR . 'img'.DIRECTORY_SEPARATOR);
 define('SCRIPTS',dirname($_SERVER['SCRIPT_NAME']) . DIRECTORY_SEPARATOR );
 define('DB_NAME',"e_commerce");
 define('DB_HOST',"127.0.0.1");
@@ -65,6 +64,11 @@ $router->get('/cart','App\controllers\CartController@index');
 
 $router->get('/userOrder','App\controllers\userOrderController@index');
 $router->get('/userOrder/:id','App\controllers\userOrderController@show');
+
+$router->get('/user/edit/:id', 'App\controllers\UserController@edit');
+$router->post('/user/edit/:id', 'App\controllers\UserController@update');
+$router->get('/user/editMdp/:id', 'App\controllers\UserController@editMdp');
+$router->post('/user/editMdp/:id', 'App\controllers\UserController@updateMdp');
 
 try{
      $router->run(); 

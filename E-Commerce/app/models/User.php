@@ -32,5 +32,15 @@ class User extends Model
     {
         return $this->query("SELECT * FROM {$this->table} WHERE id = ?",[$id]);
     }
+
+    public function updateMdp(int $id, $data)
+    {
+        if(isset($data['password1']) && !empty($data['password1']) && !empty($data['password2']) && $data['password1'] == $data['password2'])
+        {
+            $password = password_hash($data['password1'], PASSWORD_BCRYPT);
+            $stmt =  $this->db->getPDO()->prepare("UPDATE {$this->table} SET password = ? WHERE id = ?");
+            $stmt->execute([$password, $id]);
+        }
+    }
 }
 
