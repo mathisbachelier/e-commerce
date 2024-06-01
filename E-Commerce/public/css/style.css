@@ -759,3 +759,18 @@ textarea {
   color: #3b5d50 !important;
   text-decoration: underline !important;
 }
+#card_orderManagement{
+  padding: 10px !important;
+}
+.card commande{
+  padding: 10px !important;
+}
+#order_card{
+  padding: 20px !important; 
+  margin: 20px !important; 
+  margin-left: 30%  !important; 
+  margin-top: 10%    !important; 
+  margin-bottom: 10% !important;
+}
+
+

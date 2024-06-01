@@ -4,7 +4,7 @@ use Router\Router;
 
 $url = $_GET['url'];
 define('VIEWS',dirname(__DIR__) . DIRECTORY_SEPARATOR . 'views'.DIRECTORY_SEPARATOR);
-define('IMG',dirname(__DIR__) . DIRECTORY_SEPARATOR . 'public'.DIRECTORY_SEPARATOR . 'img'.DIRECTORY_SEPARATOR);
+
 define('SCRIPTS',dirname($_SERVER['SCRIPT_NAME']) . DIRECTORY_SEPARATOR );
 define('DB_NAME',"e_commerce");
 define('DB_HOST',"127.0.0.1");

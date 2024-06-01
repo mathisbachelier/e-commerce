@@ -37,7 +37,7 @@
 							<ul class="dropdown-menu" aria-labelledby="dropdownAdmins">
 								<li><a class="dropdown-item" href="/e-commerce-BTS-SIO/E-Commerce/orderManagement/orders" style="color:black !important">gestion des commandes</a></li>
 								<li><a class="dropdown-item" href="/e-commerce-BTS-SIO/E-Commerce/productManagement" style="color:black !important">ajouter un produit</a></li>
-								<li><a class="dropdown-item" href="#" style="color:black !important">test3</a></li>
+								<li><a class="dropdown-item" href="/e-commerce-BTS-SIO/E-Commerce/categoryManagement" style="color:black !important">ajouter une catégorie</a></li>
 							</ul>
 						</li>
 						<?php endif; ?>

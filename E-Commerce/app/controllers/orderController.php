@@ -38,7 +38,9 @@ class orderController extends Controller
         $product = $produc->findById($id);
 
         $user = new User($this->getDB());
-        $user = $user->findById($id);
+        $user = $user->findById($_SESSION['user_id']);
+        
+        
 
         $address = new Address($this->getDB());
         $address = $address->find_adress($id);

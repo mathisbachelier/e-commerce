@@ -62,7 +62,7 @@ function calculateTotal() {
                                             foreach($products as $product):?>    
                                                 <tr>
                                                     <td class="product-thumbnail">
-                                                        <img src="<?= $product->url_img ?>" alt="Image" class="img-fluid" height="100px" width="100px">
+                                                        <img src="<?= IMG ?>/product/<?= $product->url_img ?>" alt="Image" class="img-fluid" height="100px" width="100px">
                                                     </td>
                                                     <td class="product-name">
                                                         <a class="h5 text-black" href="E-Commerce-BTS-SIO/E-Commerce/product/<?= $product->id ?>"><?= $product->name ?></a>
