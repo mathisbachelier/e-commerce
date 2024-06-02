@@ -12,20 +12,34 @@
 	</div>
 </div>
 
-<div class="untree_co-section before-footer-section">
-    <h2>Vos commandes les plus récentes</h2>
-<ul>
-    <?php foreach ($params['orders'] as $order) { ?>
-    <div id="userOrderDiv">
-        <li> <a id="userOrderDiv-a" href="/e-commerce-BTS-SIO/E-Commerce/userOrder/<?= $order->id;?>"> Commande n° <?= $order->order_number; ?></a>
-        
-            <button type="button" class="btn btn-outline-secondary" onclick="document.location.href='/e-commerce-BTS-SIO/E-Commerce/userOrder/<?= $order->id;?>'">
-                voir votre commande
-            </button>
-        </li>
+
+<div class="row" style="margin: 20px">
+    <div class="col-12">
+        <div class="untree_co-section before-footer-section">
+            <h2>Vos commandes les plus récentes :</h2>
+            <hr>
+            <div class="row">
+                <?php foreach ($params['orders'] as $order) : ?>
+                    <div class="col-4" id="card_orderManagement" style="padding: 10px">
+                        <div class="card commande" style="padding: 20px; border-radius: 20px">
+                            <div id="userOrderDiv" style="margin-top: 0px !important">
+                                <li>
+                                    <a id="userOrderDiv-a" href="/e-commerce-BTS-SIO/E-Commerce/userOrder/<?= $order->id;?>">
+                                        Commande n° <?= $order->order_number; ?>
+                                    </a>
+                                    <p>date de la commande : <?= $order->date_order; ?></p>
+                                    <button type="button" class="btn btn-outline-primary" onclick="document.location.href='/e-commerce-BTS-SIO/E-Commerce/userOrder/<?= $order->id;?>'">
+                                        voir votre commande
+                                    </button>
+                                </li>
+                            </div>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
     </div>
-        
-    <?php } ?>
-</ul>
-<?php endif; ?>
-    </div>
+    <?php endif; ?>
+    <?php if(empty($params['orders'])): ?>
+        <p>Aucune commande à afficher</p>
+    <?php endif; ?>

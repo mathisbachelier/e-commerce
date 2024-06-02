@@ -766,10 +766,9 @@ textarea {
   padding: 10px !important;
 }
 #order_card{
-  padding: 20px !important; 
-  margin: 20px !important; 
-  margin-left: 30%  !important; 
-  margin-top: 10%    !important; 
+  padding: 50px !important; 
+  margin-left: 10% !important;
+  margin-right: 10% !important; 
   margin-bottom: 10% !important;
 }
 

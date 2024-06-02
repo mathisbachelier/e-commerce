@@ -257,15 +257,29 @@ function showText(){
 <script src="<?= SCRIPTS. 'js'. DIRECTORY_SEPARATOR .'custom.js'?>"></script>
 <script>
     function display_user() {
-		if('<?= isset($_SESSION['auth']) ? 1 : '' ?>' !='') {
-			
-		} else {
-			fetch('/E-Commerce-BTS-SIO/E-Commerce/login')
-				.then(response => response.text())
-				.then((data) => {
-					document.getElementById('display_modal').innerHTML = data;
-					document.getElementById('modal_label').innerHTML = "Se connecter";
-			});
+		let droit = <?= isset($_SESSION['auth']) ? (int)$_SESSION['auth'] : '3' ?>;
+        switch(droit) {
+            case 0:
+            case 1:
+                window.location.href = '/E-Commerce-BTS-SIO/E-Commerce/user_management/' + <?= isset($_SESSION['user_id']) ? $_SESSION['user_id'] : '1' ?>;
+                break;
+            case 2:
+                fetch('/E-Commerce-BTS-SIO/E-Commerce/user/edit/' + <?= isset($_SESSION['user_id']) ? $_SESSION['user_id'] : '1' ?>)
+                    .then(response => response.text())
+                    .then((data) => {
+                        document.getElementById('display_modal').innerHTML = data;
+                        document.getElementById('modal_label').innerHTML = "Modifier mon compte";
+                    });
+                break;
+            case 3:
+                fetch('/E-Commerce-BTS-SIO/E-Commerce/login')
+                    .then(response => response.text())
+                    .then((data) => {
+                        document.getElementById('display_modal').innerHTML = data;
+                        document.getElementById('modal_label').innerHTML = "Se connecter";
+                    });
+                break;
+        
 		}
     }
 	function display_register() {
@@ -274,6 +288,30 @@ function showText(){
 			.then((data) => {
 				document.getElementById('display_modal').innerHTML = data;
 				document.getElementById('modal_label').innerHTML = "S'inscrire";
+		});
+	}
+	function display_update_mdp() {
+		fetch('/E-Commerce-BTS-SIO/E-Commerce/user/editMdp/<?= isset($_SESSION['user_id']) ? (int)$_SESSION['user_id'] : '' ?>')
+			.then(response => response.text())
+			.then((data) => {
+				document.getElementById('display_modal').innerHTML = data;
+				document.getElementById('modal_label').innerHTML = "Modifier mon mot de passe";
+		});
+	}
+	function display_createAddress() {
+		fetch('/E-Commerce-BTS-SIO/E-Commerce/address/create/<?= isset($_SESSION['user_id']) ? (int)$_SESSION['user_id'] : '' ?>')
+			.then(response => response.text())
+			.then((data) => {
+				document.getElementById('display_modal').innerHTML = data;
+				document.getElementById('modal_label').innerHTML = "Ajouter une adresse";
+		});
+	}
+	function display_updateAddress() {
+		fetch('/E-Commerce-BTS-SIO/E-Commerce/address/edit/<?= isset($_SESSION['user_id']) ? (int)$_SESSION['user_id'] : '' ?>')
+			.then(response => response.text())
+			.then((data) => {
+				document.getElementById('display_modal').innerHTML = data;
+				document.getElementById('modal_label').innerHTML = "Modifier une adresse";
 		});
 	}
 </script>

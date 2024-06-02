@@ -66,6 +66,16 @@ $router->get('/cart','App\controllers\CartController@index');
 $router->get('/userOrder','App\controllers\userOrderController@index');
 $router->get('/userOrder/:id','App\controllers\userOrderController@show');
 
+$router->get('/user/edit/:id', 'App\controllers\UserController@edit');
+$router->post('/user/edit/:id', 'App\controllers\UserController@update');
+$router->get('/user/editMdp/:id', 'App\controllers\UserController@editMdp');
+$router->post('/user/editMdp/:id', 'App\controllers\UserController@updateMdp');
+
+$router->get('/address/create/:id', 'App\controllers\UserController@show_CreateAddress');
+$router->post('/address/create/:id', 'App\controllers\UserController@createAddress');
+$router->get('/address/edit/:id', 'App\controllers\UserController@show_EditAddress');
+$router->post('/address/edit/:id', 'App\controllers\UserController@editAddress');
+
 try{
      $router->run(); 
 } catch(\Exception $e) {
